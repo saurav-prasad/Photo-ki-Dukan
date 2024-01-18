@@ -1,9 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CardDetail from '../cardDetail/CardDetail'
 import { Zoom } from 'react-awesome-reveal'
 
 function Card({ id, image, name, price, href, imageSrc, imageAlt, color }) {
     const [toggle, setToggle] = useState(false)
+    useEffect(() => {
+        document.body.style.overflow = toggle ? 'hidden' : 'auto';
+    }, [toggle])
+
     return (
 
         <div key={id} className="relative">
