@@ -1,0 +1,6 @@
+.headerContainer {
+    border-radius: 8.906px;
+    background: #ffffff40;
+    box-shadow: -3.943px 3.943px 3.943px 0px rgba(255, 255, 255, 0.43) inset, 3.943px -3.943px 3.943px 0px rgba(182, 182, 182, 0.43) inset;
+    backdrop-filter: blur(30.034873962402344px);
+}
