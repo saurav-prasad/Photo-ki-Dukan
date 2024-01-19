@@ -1,0 +1,8 @@
+.cardListsTabs {
+    overflow-x: auto;
+
+}
+
+.cardListsTabs::-webkit-scrollbar {
+    display: none;
+}

@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import CardDetail from '../cardDetail/CardDetail'
-import { Zoom } from 'react-awesome-reveal'
 
 function Card({ id, image, name, price, href, imageSrc, imageAlt, color }) {
+
     const [toggle, setToggle] = useState(false)
     useEffect(() => {
         document.body.style.overflow = toggle ? 'hidden' : 'auto';
@@ -18,7 +18,7 @@ function Card({ id, image, name, price, href, imageSrc, imageAlt, color }) {
                 <img
                     src={imageSrc}
                     alt={imageAlt}
-                    className="h-full w-full object-cover object-center rounded-md cursor-pointer hover:brightness-[0.85] transition-brightness duration-400"
+                    className="h-full w-full object-cover object-center rounded-md cursor-pointer hover:brightness-[0.83] transition-brightness duration-450"
                 />
             </div>
             <div className="mt-3 flex justify-start items-center gap-3">

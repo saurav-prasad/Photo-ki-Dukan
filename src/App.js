@@ -9,7 +9,7 @@ import Trendings from './components/trendings/Trendings';
 function App() {
   return (
     <>
-      <div className='relative'>
+      <div className='relative h-full'>
         {/* background image */}
         <div
           className="
@@ -26,15 +26,15 @@ function App() {
       right-0
       brightness-[0.90]
       z-[-1]"/>
-      {/* components */}
+        {/* components */}
         <div className='z-1'>
           <Header />
           {/* <Title/> */}
           <SearchBar />
           {/* <Trendings/> */}
-          <CardLists/>
           {/* <CardDetail/> */}
         </div>
+        <CardLists />
       </div>
     </>
   )

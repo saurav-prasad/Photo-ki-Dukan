@@ -4,8 +4,8 @@ import { Search } from 'lucide-react'
 
 function SearchBar() {
     return (
-        <header className='mx-auto max-w-2xl pt-[4rem]'>
-            <div className='searchContainer  flex justify-start items-center gap-1 rounded-lg px-3 py-4'>
+        <header className='mx-auto w-[85%] md:max-w-2xl pt-[4rem]'>
+            <div className='searchContainer  flex justify-start items-center gap-1 rounded-lg px-3 py-2 md:py-4'>
                 {/* header title */}
                 <div className='rounded-lg cursor-pointer py-1 px-3'>
                     <Search className='text-white' />
