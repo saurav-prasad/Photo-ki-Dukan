@@ -1,30 +1,33 @@
-import React, { useEffect, useState } from 'react'
-import CardDetail from '../cardDetail/CardDetail'
+import React, { useEffect } from 'react'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 
-function Card({ id, image, name, price, href, imageSrc, imageAlt, color }) {
+function Card({ data }) {
+    const location = useLocation().pathname
+    const params = useParams()
+    const navigate = useNavigate()
 
-    const [toggle, setToggle] = useState(false)
+    const onClick = () => {
+        navigate(`${location}/preview/${data.id}`)
+    }
+
     useEffect(() => {
-        document.body.style.overflow = toggle ? 'hidden' : 'auto';
-    }, [toggle])
+        document.body.style.overflow = params.id ? 'hidden' : 'auto';
+    }, [location])
 
     return (
 
-        <div key={id} className="relative">
-            {
-                toggle && <CardDetail image={imageSrc} toggle={toggle} setToggle={setToggle} />
-            }
-            <div onClick={() => { setToggle(!toggle) }} className="h-64 w-full bg-gray-200">
+        <div className="relative">
+            <div onClick={onClick} className="h-64 w-full bg-gray-200">
                 <img
-                    src={imageSrc}
-                    alt={imageAlt}
+                     src={data.webformatURL}
+                    alt={data.type}
                     className="h-full w-full object-cover object-center rounded-md cursor-pointer hover:brightness-[0.83] transition-brightness duration-450"
                 />
             </div>
-            <div className="mt-3 flex justify-start items-center gap-3">
+            <div className="mt-3 flex justify-start items-center flex-wrap gap-3">
                 {
-                    Array.from({ length: 3 }).map((e, index) =>
-                        <span key={index} className='bg-[#f5f5f5] text-[#767676] font-normal px-2 capitalize '>bloom</span>
+                    data.tags.split(', ').map((e, index) =>
+                        <span key={index} className='bg-[#f5f5f5] text-[#767676] font-normal px-2 capitalize'>{e}</span>
                     )
                 }
             </div>

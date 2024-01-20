@@ -1,19 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './header.css'
-import { AlignRight } from 'lucide-react'
+import { AlignRight, X } from 'lucide-react'
+import { Slide } from 'react-awesome-reveal'
+import { useNavigate } from 'react-router-dom'
 
 function Header() {
+    const [toggleMenu, setToggleMenu] = useState(false)
+    const navigate = useNavigate()
     return (
-        <header className='md:mx-7 mx-2 pt-2 md:pt-9'>
-            <div className='headerContainer flex justify-between items-center gap-4 rounded-lg px-3 md:px-6 py-4'>
+        <header className='md:mx-7 mx-2 pt-2 md:pt-9 relative z-[10]'>
+            <div className='headerContainer flex justify-between items-center gap-4 rounded-lg px-3 md:px-6 py-3 md:py-4'>
                 {/* header title */}
                 <div>
-                    <h1 className='transition-all hover:underline cursor-pointer select-none font-semibold text-lg text-white'>Homepage</h1>
+                    <h1 onClick={() => { navigate('/') }} className='hover:underline transition-all cursor-pointer select-none font-semibold text-lg text-white'>Homepage</h1>
                 </div>
                 {/* signin/ signup */}
                 <div className='flex justify-between items-center gap-5'>
-                    <div className='md:hidden block relative'>
-                        <AlignRight strokeWidth={3} size={27} className='cursor-pointer text-white' />
+                    <div className='md:hidden block relative z-[10]'>
+                        <AlignRight onClick={() => setToggleMenu(true)} strokeWidth={3} size={27} className='cursor-pointer text-white' />
+                        {
+                            toggleMenu &&
+                            <div className='absolute right-0 top-0'>
+                                <Slide direction='down' duration={200}>
+                                    <HeaderMenu setToggleMenu={setToggleMenu} />
+                                </Slide>
+                            </div>
+                        }
+
                     </div>
                     {/* Login button */}
                     <div className='md:block hidden'>
@@ -34,3 +47,28 @@ function Header() {
 }
 
 export default Header
+
+
+export const HeaderMenu = ({ setToggleMenu }) => {
+    return (
+        <>
+            <div className='flex border rounded-md justify-center items-start flex-col bg-white px-1'>
+                <div className='w-full float-right flex justify-end'>
+                    <X onClick={() => { setToggleMenu(false) }} size={32} className='text-right cursor-pointer pr-1 pt-1' />
+                </div>
+                <span className='rounded-sm transition-all font-medium hover:bg-[#f5f5f5] text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
+                    Login
+                </span>
+                <span className='rounded-sm transition-all font-medium hover:bg-[#f5f5f5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
+                    Create Account
+                </span>
+                <span className='rounded-sm transition-all font-medium hover:bg-[#F5F5F5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
+                    Favourite
+                </span>
+                <span className='rounded-sm transition-all font-medium hover:bg-[#F5F5F5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
+                    Downloads
+                </span>
+            </div>
+        </>
+    )
+}

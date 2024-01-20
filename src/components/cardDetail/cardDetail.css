@@ -6,6 +6,9 @@
         overflow-y: auto;
         background: white;
     }
+    .detailContainer::-webkit-scrollbar {
+        display: none;
+    }
 
     .detailSubContainer {
         width: 100%;
