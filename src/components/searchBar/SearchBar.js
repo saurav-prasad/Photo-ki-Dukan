@@ -36,7 +36,7 @@ function SearchBar() {
                     <input
                         onChange={(e) => { setData(e.target.value) }}
                         type="text"
-                        class="w-full bg-[#0d1829] flex bg-transparent ml-4 font-semibold text-lg text-white outline-0 placeholder:text-white placeholder:text-lg placeholder:font-semibold placeholder:select-none"
+                        className="w-full bg-[#0d1829] flex bg-transparent ml-4 font-semibold text-lg text-white outline-0 placeholder:text-white placeholder:text-lg placeholder:font-semibold placeholder:select-none"
                         placeholder={location ? "Start new search" : "Search"}
                     />
 

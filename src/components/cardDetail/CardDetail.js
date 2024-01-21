@@ -6,13 +6,20 @@ import Skeleton from 'react-loading-skeleton';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { searchPhoto } from '../../axios/axios';
 import sliceString from '../../functions/sliceString';
-import { Share } from 'lucide-react';
+import { Share, Star } from 'lucide-react';
+import supabaseClient from '../../functions/supabaseClient';
+import { useDispatch, useSelector } from 'react-redux';
+import { addFavourite, deleteFavourite } from '../../redux/features/favourite';
 
 
 function CardDetail() {
-    const [data, setData] = useState()
+    const [cardData, setCardData] = useState()
     const navigate = useNavigate()
     const previewId = useParams().id
+    const [fav, setFav] = useState(false)
+    const { user } = useSelector(state => state.authReducer)
+    const dispatch = useDispatch()
+
 
     // TODO masonry
     const shareCurrentUrl = () => {
@@ -31,27 +38,35 @@ function CardDetail() {
 
     const [imageLoad, setimageLoad] = useState()
 
-    const imageSize = [
-        {
-            name: 'Small',
-            size: '640x960'
-        },
-        {
-            name: 'Medium',
-            size: '19920x2660'
-        },
-        {
-            name: 'Big',
-            size: '2400x3600'
-        },
-        {
-            name: 'Original',
-            size: '3850x5640'
-        },
-    ]
-    const download = async () => {
+    const addToFav = async () => {
         try {
-            //  downloadImage(image)
+            const { data, error } = await supabaseClient
+                .from('favourite')
+                .insert([
+                    {
+                        image_id: cardData.id,
+                        user_id: user.id,
+                        image_url: cardData?.largeImageURL,
+                        tags: cardData?.tags
+                    },
+                ]).select()
+            setFav(true)
+            !error && dispatch(addFavourite(data[0]))
+        } catch (error) {
+            console.log(error);
+        }
+    };
+    const removeFromFav = async () => {
+        try {
+
+            const { error } = await supabaseClient
+                .from('favourite')
+                .delete()
+                .eq('user_id', user.id)
+                .eq('image_id', cardData.id)
+
+            setFav(false)
+            !error && dispatch(deleteFavourite({id:cardData.id}))
         } catch (error) {
             console.log(error);
         }
@@ -60,7 +75,11 @@ function CardDetail() {
     const location = useLocation()
 
     const handleModalOpen = () => {
-        navigate(location.pathname.split('/preview')[0])
+        location.pathname.split('/preview')[0].startsWith('/search') && navigate(location.pathname.split('/preview')[0])
+        !location.pathname.split('/preview')[0].startsWith('/search') && navigate('/')
+        location.pathname.split('/preview')[0].startsWith('/favourite') && navigate('/favourite')
+        location.pathname.split('/preview')[0].startsWith('/downloads') && navigate('/downloads')
+
         console.log();
     };
 
@@ -76,8 +95,9 @@ function CardDetail() {
                         id: previewId,
                     }
                 })
-                setData(imageData.data.hits[0])
-                // console.log(imageData.data.hits[0]);
+                setCardData(imageData.data.hits[0])
+                const favCheck = await supabaseClient.from('favourite').select('*').eq('user_id', user?.id).eq('image_id', previewId)
+                favCheck.data.length > 0 && setFav(true)
             } catch (error) {
                 console.log(error);
             }
@@ -107,7 +127,7 @@ function CardDetail() {
                                 {/* imgaes */}
                                 <div className={`flex-1 ${!imageLoad && 'md:w-[50vw]'}`}>
                                     {
-                                        <img onLoad={() => { setimageLoad(true) }} className=' object-contain w-full max-h-[80vh]  rounded-md' src={data?.largeImageURL} alt="" />
+                                        <img onLoad={() => { setimageLoad(true) }} className=' object-contain w-full max-h-[80vh]  rounded-md' src={cardData?.largeImageURL} alt="" />
                                     }
                                     {!imageLoad && <div className='w-full'>
                                         <Skeleton className='text-[30em] object-containrounded-md' baseColor="#d4d4d4" highlightColor="#858383" />
@@ -119,23 +139,27 @@ function CardDetail() {
                                     <div>
                                         <div className='flex justify-between items-center mb-5'>
                                             <h1 className='text-xl font-semibold text-[#3B4043]'>Download</h1>
-                                            <Share onClick={shareCurrentUrl} className='cursor-pointer'/>
+                                            <div className='flex flex-row justify-start items-center gap-3'>
+                                                <Share onClick={shareCurrentUrl} className='cursor-pointer' />
+                                                {user && <Star onClick={fav ? removeFromFav : addToFav} size={27} className={`cursor-pointer text-amber-500 ${fav && "fill-amber-400"}`} />}
+                                            </div>
+
                                         </div>
                                         <div className=''>
-                                            <DownloadMenu data={data} />
+                                            <DownloadMenu data={cardData} />
                                         </div>
                                     </div>
                                     {/* image informations */}
                                     <div className='md:mt-6 mt-8'>
                                         <h1 className='text-xl font-semibold text-[#3B4043] mb-4'>Information</h1>
-                                        <ImageInfos user={data?.user} userId={data?.user_id} type={data?.type} views={data?.views} downloads={data?.downloads} likes={data?.likes} />
+                                        <ImageInfos user={cardData?.user} userId={cardData?.user_id} type={cardData?.type} views={cardData?.views} downloads={cardData?.downloads} likes={cardData?.likes} />
                                     </div>
                                 </aside>
                             </div>
-                            {data?.tags && <div className='px-1 mt-7 md:mt-5 flex flex-row justify-start flex-wrap items-center gap-2 '>
+                            {cardData?.tags && <div className='px-1 mt-7 md:mt-5 flex flex-row justify-start flex-wrap items-center gap-2 '>
                                 <h1 className='font-semibold text-[#3B4043]'>Tags:</h1>
                                 {
-                                    data?.tags.split(', ').map((e, index) =>
+                                    cardData?.tags.split(', ').map((e, index) =>
                                         <span className='text-[#767676] rounded-sm py-1  px-3 text-xs bg-[#F5F5F5]' key={index}>{e}</span>
                                     )
                                 }

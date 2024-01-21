@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Card from '../card/Card'
 import './cardLists.css'
-import { useLocation, useNavigate, useParams, useSearchParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { searchPhoto } from '../../axios/axios'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
@@ -49,8 +49,6 @@ function CardLists() {
         fetchData()
     }, [imageQuery])
 
-
-
     const fetchMoreData = async () => {
         try {
             setpage(page + 1);
@@ -63,9 +61,7 @@ function CardLists() {
                 },
             })
             setData(data.concat(imageData.data.hits))
-            // settotalPages(Math.ceil((data.data.totalHits / perPage)))
             settotalPages(Math.ceil((imageData.data.totalHits / perPage)))
-            // console.log(imageData.data);
             setLoader(false)
         } catch (error) {
             setLoader(false)
@@ -141,33 +137,6 @@ export const CardSkeleton = () => {
                         )
                     }
                 </div>
-            </div>
-        </>
-    )
-}
-export const CardSkeleton1 = () => {
-    return (
-        <>
-            <div className="lg:mx-12 px-3 py-10 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 h-full">
-
-                <SkeletonTheme baseColor="#d4d4d4" highlightColor="#858383">
-                    {Array.from({ length: 3 }).map((e, index) =>
-                        <div className="relative">
-                            <div className="h-64 w-full ">
-                                <Skeleton
-                                    className="h-full w-full object-cover object-center rounded-md cursor-pointer hover:brightness-[0.83] transition-brightness duration-450"
-                                />
-                            </div>
-                            <div className="mt-3 flex justify-start items-center gap-3">
-                                {
-                                    Array.from({ length: 3 }).map((e, index) =>
-                                        <Skeleton width={30} key={index} className='bg-[#f5f5f5] text-[#767676] font-normal px-2 capitalize' />
-                                    )
-                                }
-                            </div>
-                        </div>
-                    )}
-                </SkeletonTheme>
             </div>
         </>
     )
