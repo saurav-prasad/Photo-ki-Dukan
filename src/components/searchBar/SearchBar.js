@@ -19,7 +19,7 @@ function SearchBar() {
             if (timer !== null) clearTimeout(timer)
             timer = setTimeout(() => {
                 navigate(`/search/${data}`)
-                setData('')
+                
                 timer = null
             }, 1000)
         }
