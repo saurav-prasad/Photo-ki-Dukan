@@ -6,3 +6,17 @@
 .cardListsTabs::-webkit-scrollbar {
     display: none;
 }
+
+/* .cardListsImages {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(4, 1fr);
+
+}
+
+.cardListsImages:first-child {
+    grid-column: 3 span;
+}
+.cardListsImages:nth-child(8) {
+    grid-column: 5 span;
+} */

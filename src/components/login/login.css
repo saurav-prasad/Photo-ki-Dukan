@@ -1,0 +1,17 @@
+@media (max-width: 640px) {
+
+    .loginContainer {
+        height: 100%;
+        width: 100%;
+        overflow-y: auto;
+        background: white;
+    }
+    .loginContainer::-webkit-scrollbar {
+        display: none;
+    }
+
+    .loginSubContainer {
+        width: 100%;
+        height: 100%;
+    }
+}

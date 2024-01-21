@@ -6,12 +6,28 @@ import Skeleton from 'react-loading-skeleton';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { searchPhoto } from '../../axios/axios';
 import sliceString from '../../functions/sliceString';
+import { Share } from 'lucide-react';
 
 
 function CardDetail() {
     const [data, setData] = useState()
     const navigate = useNavigate()
     const previewId = useParams().id
+
+    // TODO masonry
+    const shareCurrentUrl = () => {
+        const currentUrl = window.location.href;
+        if (navigator.share) {
+            navigator.share({
+                title: 'Share the URL',
+                url: currentUrl,
+            })
+                .then(() => console.log('Shared successfully'))
+                .catch((error) => console.error('Error sharing:', error));
+        } else {
+            alert(`Share this URL: ${currentUrl}`);
+        }
+    };
 
     const [imageLoad, setimageLoad] = useState()
 
@@ -73,8 +89,7 @@ function CardDetail() {
         <>
             <div onClick={handleModalOpen} className='transition-all z-10 overflow-y-hidden flex justify-center items-center fixed bg-[#00000080] top-0 bottom-0 left-0 right-0 bg-[rgba(0, 0, 0, 0.50)]'>
                 <Zoom duration={200} className='detailContainer flex justify-center items-center z-20'>
-                    <div onClick={handleZoomClick} className={`detailSubContainer bg-white md:rounded-lg md:max-w-[95%] md:max-h-[80%]
-                `}>
+                    <div onClick={handleZoomClick} className={`detailSubContainer bg-white md:rounded-lg md:max-w-[95%] md:max-h-[80%]`}>
                         {/* header */}
                         <div className='flex justify-between items-center h-16 px-5 bg-[#F5F5F5] rounded-t-lg'>
                             <h1 className='text-[#3B4043] font-medium text-xl'>
@@ -102,7 +117,10 @@ function CardDetail() {
                                 <aside className='md:w-[30%] min-w-60 px-1'>
                                     {/* download section */}
                                     <div>
-                                        <h1 className='text-xl font-semibold text-[#3B4043] mb-4'>Download</h1>
+                                        <div className='flex justify-between items-center mb-5'>
+                                            <h1 className='text-xl font-semibold text-[#3B4043]'>Download</h1>
+                                            <Share onClick={shareCurrentUrl} className='cursor-pointer'/>
+                                        </div>
                                         <div className=''>
                                             <DownloadMenu data={data} />
                                         </div>

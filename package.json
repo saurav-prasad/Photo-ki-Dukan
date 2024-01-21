@@ -4,6 +4,10 @@
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.3",
+    "@reduxjs/toolkit": "^2.0.1",
+    "@supabase/auth-ui-react": "^0.4.7",
+    "@supabase/auth-ui-shared": "^0.1.8",
+    "@supabase/supabase-js": "^2.39.3",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -12,9 +16,12 @@
     "react": "^18.2.0",
     "react-awesome-reveal": "^4.2.7",
     "react-dom": "^18.2.0",
+    "react-infinite-scroll-component": "^6.1.0",
     "react-loading-skeleton": "^3.3.1",
+    "react-redux": "^9.1.0",
     "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",
+    "redux": "^5.0.1",
     "swiper": "^11.0.5",
     "web-vitals": "^2.1.4"
   },
