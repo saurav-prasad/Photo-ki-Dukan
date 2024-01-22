@@ -12,6 +12,7 @@ import Login from './components/login/Login';
 import Downloads from './components/downloads/Downloads';
 import Favourite from './components/favourite/Favourite';
 import Error from './components/error/Error';
+import HistoFav from './components/histoFav/HistoFav';
 
 function App() {
   const [bgImage, setBgImage] = useState('https://pixabay.com/get/geedac2bec0326b5eae8a1be0f544aac6a6af62d2eba6d279f13f37560e09fc797e76422f3c46f0ce252ee8f7743117bd6fe3f610e6542d69656a1ce631955858_1280.jpg')
@@ -88,14 +89,16 @@ function App() {
       path: '/favourite',
       element: <>
         <Header />
-        <Favourite />
+        <SearchBar />
+        <HistoFav type='favourite' />
       </>
     },
     {
       path: '/favourite/preview/:id',
       element: <>
         <Header />
-        <Favourite />
+        <SearchBar />
+        <HistoFav type='favourite' />
         <CardDetail />
       </>
     },
@@ -103,7 +106,17 @@ function App() {
       path: '/downloads',
       element: <>
         <Header />
-        <Downloads />
+        <SearchBar />
+        <HistoFav type='downloads' />
+      </>
+    },
+    {
+      path: '/downloads/preview/:id',
+      element: <>
+        <Header />
+        <SearchBar />
+        <HistoFav type='downloads' />
+        <CardDetail />
       </>
     },
     {

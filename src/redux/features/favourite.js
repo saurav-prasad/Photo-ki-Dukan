@@ -3,7 +3,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit"
 let initialState = []
 
 export const FavouriteSlice = createSlice({
-    name: 'post',
+    name: 'favourite',
     initialState,
     reducers: {
         createFavourite: (state, action) => {

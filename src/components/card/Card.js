@@ -5,7 +5,7 @@ import supabaseClient from '../../functions/supabaseClient'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteFavourite } from '../../redux/features/favourite'
 
-function Card({ data, alterValues }) {
+function Card({ data, alterValues,favBtn }) {
     const location = useLocation().pathname
     const params = useParams()
     const navigate = useNavigate()
@@ -42,7 +42,7 @@ function Card({ data, alterValues }) {
                     alt={data?.type}
                     className="h-full w-full object-cover object-center rounded-md cursor-pointer hover:brightness-[0.83] transition-brightness duration-450 z-[5]"
                 />
-                {alterValues && <Star onClick={removeFromFav} size={30} className={`cursor-pointer absolute top-2 right-2 text-amber-500 fill-amber-400 z-[6]`} />}
+                {favBtn && <Star onClick={removeFromFav} size={30} className={`cursor-pointer absolute top-2 right-2 text-amber-500 fill-amber-400 z-[6]`} />}
             </div>
             <div className="mt-3 flex justify-start items-center flex-wrap gap-3">
                 {

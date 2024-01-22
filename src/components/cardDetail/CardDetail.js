@@ -10,6 +10,7 @@ import { Share, Star } from 'lucide-react';
 import supabaseClient from '../../functions/supabaseClient';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavourite, deleteFavourite } from '../../redux/features/favourite';
+import { addDownloads } from '../../redux/features/downloads';
 
 
 function CardDetail() {
@@ -52,6 +53,25 @@ function CardDetail() {
                 ]).select()
             setFav(true)
             !error && dispatch(addFavourite(data[0]))
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    const addToDownloads = async () => {
+        try {
+            const { data, error } = await supabaseClient
+                .from('downloads')
+                .insert([
+                    {
+                        image_id: cardData.id,
+                        user_id: user.id,
+                        image_url: cardData?.largeImageURL,
+                        tags: cardData?.tags
+                    },
+                ]).select()
+                console.log(error);
+            !error && dispatch(addDownloads(data[0]))
         } catch (error) {
             console.log(error);
         }
@@ -146,7 +166,7 @@ function CardDetail() {
 
                                         </div>
                                         <div className=''>
-                                            <DownloadMenu data={cardData} />
+                                            <DownloadMenu addToDownloads={addToDownloads} data={cardData} />
                                         </div>
                                     </div>
                                     {/* image informations */}
@@ -175,7 +195,7 @@ function CardDetail() {
 export default CardDetail
 
 
-export const DownloadMenu = ({ data }) => {
+export const DownloadMenu = ({ data,addToDownloads }) => {
     const [selectSize, setSelectSize] = useState('small')
     const [downloadUrl, setDownloadUrl] = useState(data?.previewURL)
 
@@ -183,9 +203,11 @@ export const DownloadMenu = ({ data }) => {
         try {
             if (!downloadUrl) {
                 downloadImage(data.previewURL)
+                addToDownloads()
             }
             else {
                 downloadImage(downloadUrl)
+                addToDownloads()
             }
         } catch (error) {
             console.log(error);
