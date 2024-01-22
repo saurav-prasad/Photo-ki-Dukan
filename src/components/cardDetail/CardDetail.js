@@ -13,7 +13,7 @@ import { addFavourite, deleteFavourite } from '../../redux/features/favourite';
 import { addDownloads } from '../../redux/features/downloads';
 
 
-function CardDetail() {
+function CardDetail({ setAlertText, setAlert, showAlert }) {
     const [cardData, setCardData] = useState()
     const navigate = useNavigate()
     const previewId = useParams().id
@@ -70,7 +70,7 @@ function CardDetail() {
                         tags: cardData?.tags
                     },
                 ]).select()
-                console.log(error);
+            console.log(error);
             !error && dispatch(addDownloads(data[0]))
         } catch (error) {
             console.log(error);
@@ -86,7 +86,7 @@ function CardDetail() {
                 .eq('image_id', cardData.id)
 
             setFav(false)
-            !error && dispatch(deleteFavourite({id:cardData.id}))
+            !error && dispatch(deleteFavourite({ id: cardData.id }))
         } catch (error) {
             console.log(error);
         }
@@ -125,6 +125,21 @@ function CardDetail() {
         fetchData()
     }, [previewId])
 
+    const onFavClick = () => {
+        if (user) {
+            if (fav) {
+                removeFromFav()
+                showAlert('Image removed from favourite')
+            }
+            else {
+                addToFav()
+                showAlert('Image added to favourite')
+            }
+        }
+        else {
+            showAlert('Signin first')
+        }
+    }
     return (
         <>
             <div onClick={handleModalOpen} className='transition-all z-10 overflow-y-hidden flex justify-center items-center fixed bg-[#00000080] top-0 bottom-0 left-0 right-0 bg-[rgba(0, 0, 0, 0.50)]'>
@@ -132,7 +147,7 @@ function CardDetail() {
                     <div onClick={handleZoomClick} className={`detailSubContainer bg-white md:rounded-lg md:max-w-[95%] md:max-h-[80%]`}>
                         {/* header */}
                         <div className='flex justify-between items-center h-16 px-5 bg-[#F5F5F5] rounded-t-lg'>
-                            <h1 className='text-[#3B4043] font-medium text-xl'>
+                            <h1 onClick={() => { showAlert("lfsadl") }} className='text-[#3B4043] font-medium text-xl'>
                                 Preview ID: {previewId}
                             </h1>
                             <div onClick={() => handleModalOpen()} className='cursor-pointer'>
@@ -161,7 +176,7 @@ function CardDetail() {
                                             <h1 className='text-xl font-semibold text-[#3B4043]'>Download</h1>
                                             <div className='flex flex-row justify-start items-center gap-3'>
                                                 <Share onClick={shareCurrentUrl} className='cursor-pointer' />
-                                                {user && <Star onClick={fav ? removeFromFav : addToFav} size={27} className={`cursor-pointer text-amber-500 ${fav && "fill-amber-400"}`} />}
+                                                <Star onClick={onFavClick} size={27} className={`cursor-pointer text-amber-500 ${fav && "fill-amber-400"}`} />
                                             </div>
 
                                         </div>
@@ -195,7 +210,7 @@ function CardDetail() {
 export default CardDetail
 
 
-export const DownloadMenu = ({ data,addToDownloads }) => {
+export const DownloadMenu = ({ data, addToDownloads }) => {
     const [selectSize, setSelectSize] = useState('small')
     const [downloadUrl, setDownloadUrl] = useState(data?.previewURL)
 

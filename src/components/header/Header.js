@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './header.css'
-import { AlignRight, X } from 'lucide-react'
+import { AlignRight, Download, Star, X } from 'lucide-react'
 import { Slide } from 'react-awesome-reveal'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -127,11 +127,11 @@ export const HeaderMenu = ({ setToggleMenu, user, logOutUser }) => {
                 </>
                 }
                 {user && <>
-                    <span onClick={() => { navigate('/favourite'); setToggleMenu(false) }} className='rounded-sm transition-all font-medium hover:bg-[#F5F5F5] text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
-                        Favourite
+                    <span onClick={() => { navigate('/favourite'); setToggleMenu(false) }} className='flex justify-start items-center gap-1 rounded-sm transition-all font-medium hover:bg-[#F5F5F5] text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
+                        <Star size={20} className='text-amber-500 fill-amber-400' />Favourite
                     </span>
-                    <span onClick={() => { navigate('/downloads'); setToggleMenu(false) }} className='rounded-sm transition-all font-medium hover:bg-[#F5F5F5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
-                        Downloads
+                    <span onClick={() => { navigate('/downloads'); setToggleMenu(false) }} className='flex justify-start items-center gap-1 rounded-sm transition-all font-medium hover:bg-[#F5F5F5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
+                        <Download size={20} className='text-amber-500 fill-amber-400' />Downloads
                     </span>
                     <span onClick={() => { logOutUser(); setToggleMenu(false) }} className='rounded-sm transition-all font-medium hover:bg-[#F5F5F5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
                         Logout

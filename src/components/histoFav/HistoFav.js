@@ -10,16 +10,18 @@ import { createFavourite } from '../../redux/features/favourite';
 import { createDownloads } from '../../redux/features/downloads';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-function HistoFav({ type }) {
+function HistoFav({ type, showAlert }) {
     const [data, setData] = useState()
     const histoFavState = useSelector(state => state[`${type}Reducer`])
     const dispatch = useDispatch()
     const { user } = useSelector(state => state.authReducer)
     const navigate = useNavigate()
     const location = useLocation()
+    const [loader, setLoader] = useState(false)
 
     useEffect(() => {
         async function fetchData() {
+            setLoader(true)
             try {
                 if (histoFavState.length === 0) {
                     const imageData = await supabaseClient
@@ -28,17 +30,18 @@ function HistoFav({ type }) {
                     // setData(sortArray(imageData.data))
                     dispatch(type === 'favourite' ? createFavourite(imageData.data) : createDownloads(imageData.data))
                 }
+                setLoader(false)
             } catch (error) {
                 console.log(error);
+                setLoader(false)
             }
         }
         fetchData()
     }, [location])
 
     useEffect(() => {
-        console.log(histoFavState);
         setData(sortArray(histoFavState))
-    }, [histoFavState,location])
+    }, [histoFavState, location])
 
     useEffect(() => {
         if (!user) {
@@ -56,20 +59,22 @@ function HistoFav({ type }) {
                 <section className="bg-white mt-12 h-full">
                     <div className="lg:mx-12 px-3 py-10 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 h-full">
                         {
-                            data ? data?.map((image) =>
+                            data && data.map((image) =>
 
-                                <Card favBtn={type === 'favourite' && true} alterValues={true} key={image.id} data={image} />
-                            ) :
-
-                                <SkeletonTheme baseColor="#d4d4d4" highlightColor="#858383">
-                                    {
-                                        Array.from({ length: 7 }).map((e, index) => <CardSkeleton key={index} />)
-                                    }
-                                </SkeletonTheme>
+                                <Card showAlert={showAlert} favBtn={type === 'favourite' ? true : false} alterValues={true} key={image.id} data={image} />
+                            )
+                        }
+                        {
+                            (loader && !data) &&
+                            <SkeletonTheme baseColor="#d4d4d4" highlightColor="#858383">
+                                {
+                                    Array.from({ length: 7 }).map((e, index) => <CardSkeleton key={index} />)
+                                }
+                            </SkeletonTheme>
                         }
                     </div>
                     {
-                        data?.length <= 0 && <div className="md:h-[38vh] h-[55vh] flex justify-center items-center">
+                        (!loader && data?.length <= 0) && <div className="md:h-[38vh] h-[55vh] flex justify-center items-center">
                             <h1 className='text-center text-4xl font-semibold text-gray-900 '>No {type}</h1>
                         </div>
                     }
