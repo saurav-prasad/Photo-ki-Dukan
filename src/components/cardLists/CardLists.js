@@ -73,7 +73,7 @@ function CardLists() {
         <div className="md:mt-10 mt-5 absolute w-full">
             <Slide triggerOnce direction='up' duration={250}>
                 <section className='text-white text-4xl md:text-5xl font-bold flex flex-col gap-2 mt-20 select-none'>
-                    <span className='w-full text-center'>Results: <span className='capitalize'>{imageQuery}</span></span>
+                    <span className='w-full text-center'>Results: {imageQuery}</span>
                 </section>
 
                 <section className="bg-white mt-12 h-full">
