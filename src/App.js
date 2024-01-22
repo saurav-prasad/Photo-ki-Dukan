@@ -17,7 +17,7 @@ import HistoFav from './components/histoFav/HistoFav';
 function App() {
   const [bgImage, setBgImage] = useState('https://pixabay.com/get/geedac2bec0326b5eae8a1be0f544aac6a6af62d2eba6d279f13f37560e09fc797e76422f3c46f0ce252ee8f7743117bd6fe3f610e6542d69656a1ce631955858_1280.jpg')
 
-  const bgImageSearchQuery = ['flower', 'art', 'animal', 'hide', 'monkey', 'love', 'forest', 'river', 'rose', 'lights', 'rain', 'blossom', 'dogs', 'landscape', 'cat', 'texture', 'object', 'blackrose', 'kids', 'nebula', 'tree', 'dark', 'black and white', 'dew', 'road', 'dirty', 'gorilla', 'horse', 'elephant', 'wolf', 'illustrations', 'autumn leaf', 'hollow', 'birds', 'crow', 'crows', 'bulb', 'street', 'old', 'donkey', 'cow', 'cattle', 'grazing', 'pastures', 'lama', 'monk', 'Buddhism', 'temple', 'arches', 'architecture', 'cave', 'sandstone', 'benagil', 'canyon', 'stones', 'books', 'ancient', 'metal', 'pyrites', 'minerals','coast','Lake Sunset trees']
+  const bgImageSearchQuery = ['flower', 'art', 'animal', 'hide', 'monkey', 'love', 'forest', 'river', 'rose', 'lights', 'rain', 'blossom', 'dogs', 'landscape', 'cat', 'texture', 'object', 'blackrose', 'kids', 'nebula', 'tree', 'dark', 'black and white', 'dew', 'road', 'dirty', 'gorilla', 'horse', 'elephant', 'wolf', 'illustrations', 'autumn leaf', 'hollow', 'birds', 'crow', 'crows', 'bulb', 'street', 'old', 'donkey', 'cow', 'cattle', 'grazing', 'pastures', 'lama', 'monk', 'Buddhism', 'temple', 'arches', 'architecture', 'cave', 'sandstone', 'benagil', 'canyon', 'stones', 'books', 'ancient', 'metal', 'pyrites', 'minerals','coast','Lake Sunset trees','sunset trees']
 
   useEffect(() => {
     async function fetchData() {
