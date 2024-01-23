@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+<img src="https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/9b9b2b09-da45-4da7-8d31-f587272b37d6" width="80px" height="80px"/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Photo Ki Dukan
 
-In the project directory, you can run:
+This app houses a diverse collection of photos, providing users with the ability to find any image they desire. Whether you're searching for specific themes, subjects, or simply exploring, this app ensures a comprehensive and easily navigable repository of photos
 
-### `npm start`
+## Live demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Have a look of the app:
+https://photo-ki-dukan.vercel.app/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
+List of some of the key features of the app:
 
-### `npm test`
+- Signin/Signup
+- Search photos
+- Favourite list of photos
+- History of downloads
+- Dynamic wallpaper
+- Download photos
+- Download differnt sizes of photos
+- Share photos
+- Google OAuth
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This app was built using the following technologies and tools:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Frontend:
+  - HTML
+  - CSS
+  - JavaScript
+  - ReactJS
+  - TailwindCSS
+  - React Router Dom
+  - Redux
+  - React Loading Skeleton
+  - React Awesome Reveal
+  - React Infinite Scroll Component
+  - Lucide React
+  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Backend:
+  - Supabase
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Hosting & Deployment:
+  - Vercel
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Version Control:
+  - Git
+  - GitHub
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Screenshots
+- Desktop view
+  
+![Screenshot 2024-01-12 195016](https://github.com/saurav-prasad/Sociol/assets/70149386/a791fd94-789f-48b9-8f09-839988360044)
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Screenshot 2024-01-12 195158](https://github.com/saurav-prasad/Sociol/assets/70149386/84135cbc-6ca6-438f-945d-e807b379a6a7)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+![Screenshot 2024-01-12 195253](https://github.com/saurav-prasad/Sociol/assets/70149386/6b2d207e-67a4-4405-8e20-1c62980606ab)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+![Screenshot 2024-01-12 195314](https://github.com/saurav-prasad/Sociol/assets/70149386/91fd339b-2553-466c-920a-e819bee29a24)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+![Screenshot 2024-01-12 195454](https://github.com/saurav-prasad/Sociol/assets/70149386/c4f365ca-0cc8-46c2-bad8-14ea03e4af4c)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- Mobile View
 
-### Advanced Configuration
+![Copy of Screenshot_20231105-231053_Chrome jpg](https://github.com/saurav-prasad/Sociol/assets/70149386/eee588fe-de0c-4094-8a03-af9e8176dbe7)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+![Copy of Screenshot_20231105-231053_Chrome jpg (1)](https://github.com/saurav-prasad/Sociol/assets/70149386/9d3a89f6-af17-4197-957a-fea307cce134)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
-### `npm run build` fails to minify
+## Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Provide instructions for setting up and running your project locally. Include any prerequisites, environment setup, and installation steps.
+
+```bash
+# Clone the repository
+git clone https://github.com/saurav-prasad/Photo-ki-Dukan.git
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm start
