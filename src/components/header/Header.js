@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './header.css'
-import { AlignRight, Download, Star, X } from 'lucide-react'
+import { AlignRight, Download, KeyRound, LogOut, Star, X } from 'lucide-react'
 import { Slide } from 'react-awesome-reveal'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -118,8 +118,8 @@ export const HeaderMenu = ({ setToggleMenu, user, logOutUser }) => {
                     <X onClick={() => { setToggleMenu(false) }} size={32} className='text-right cursor-pointer pr-1 pt-1' />
                 </div>
                 {!user && <>
-                    <span onClick={() => { navigate('/login'); setToggleMenu(false) }} className='rounded-sm transition-all font-medium hover:bg-[#f5f5f5] text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
-                        Login
+                    <span onClick={() => { navigate('/login'); setToggleMenu(false) }} className='flex justify-start items-center gap-1 rounded-sm transition-all font-medium hover:bg-[#f5f5f5] text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
+                    <KeyRound /> Login
                     </span>
                     <span onClick={() => { navigate('/login'); setToggleMenu(false) }} className='rounded-sm transition-all font-medium hover:bg-[#f5f5f5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
                         Create Account
@@ -128,13 +128,13 @@ export const HeaderMenu = ({ setToggleMenu, user, logOutUser }) => {
                 }
                 {user && <>
                     <span onClick={() => { navigate('/favourite'); setToggleMenu(false) }} className='flex justify-start items-center gap-1 rounded-sm transition-all font-medium hover:bg-[#F5F5F5] text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
-                        <Star size={20} className='text-amber-500 fill-amber-400' />Favourite
+                        <Star size={20} className='' />Favourite
                     </span>
                     <span onClick={() => { navigate('/downloads'); setToggleMenu(false) }} className='flex justify-start items-center gap-1 rounded-sm transition-all font-medium hover:bg-[#F5F5F5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
-                        <Download size={20} className='text-amber-500 fill-amber-400' />Downloads
+                        <Download size={20} className='' />Downloads
                     </span>
-                    <span onClick={() => { logOutUser(); setToggleMenu(false) }} className='rounded-sm transition-all font-medium hover:bg-[#F5F5F5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
-                        Logout
+                    <span onClick={() => { logOutUser(); setToggleMenu(false) }} className='flex justify-start items-center gap-1 rounded-sm transition-all font-medium hover:bg-[#F5F5F5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
+                        <LogOut size={20} className='' />Logout
                     </span>
                 </>}
             </div >

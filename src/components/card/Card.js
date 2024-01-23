@@ -5,8 +5,9 @@ import supabaseClient from '../../functions/supabaseClient'
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteFavourite } from '../../redux/features/favourite'
 import timePassed from '../../functions/timePassed'
+import { Zoom } from 'react-awesome-reveal'
 
-function Card({ data, alterValues, favBtn, showAlert }) {
+function Card({ data, alterValues, favBtn, showAlert, dwndTime }) {
     const location = useLocation().pathname
     const params = useParams()
     const navigate = useNavigate()
@@ -40,27 +41,26 @@ function Card({ data, alterValues, favBtn, showAlert }) {
         showAlert('Image removed from favourite')
     }
     return (
-
-        <div className="relative">
-            <div className="h-64 w-full bg-gray-200 relative">
-                <img onClick={onClick}
-                    src={alterValues ? data.image_url : data.webformatURL}
-                    alt={data?.type}
-                    className="h-full w-full object-cover object-center rounded-md cursor-pointer hover:brightness-[0.83] transition-brightness duration-450 z-[5]"
-                />
-                {favBtn ? <Star onClick={onFavClick} size={30} className={`cursor-pointer absolute top-2 right-2 text-amber-500 fill-amber-400 z-[6]`} /> :
-                    <span className='absolute top-0 right-0 select-none text-xs font-medium text-slate-500 bg-white pl-1 rounded-l-lg text-center'>{timePassed(data.timestamp)} ago</span>
-                }
+            <div className="relative">
+                <div className="h-64 w-full bg-gray-200 relative">
+                    <img onClick={onClick}
+                        src={alterValues ? data.image_url : data.webformatURL}
+                        alt={data?.type}
+                        className="h-full w-full object-cover object-center rounded-md cursor-pointer hover:brightness-[0.83] transition-brightness duration-450 z-[5]"
+                    />
+                    {favBtn && <Star onClick={onFavClick} size={30} className={`cursor-pointer absolute top-2 right-2 text-amber-500 fill-amber-400 z-[6]`} />}
+                    {dwndTime &&
+                        <span className='absolute top-0 right-0 select-none text-xs font-medium text-slate-500 bg-white pl-1 rounded-l-lg text-center'>{timePassed(data.timestamp)} ago</span>
+                    }
+                </div>
+                <div className={`mt-3 flex 'justify-start' items-center flex-wrap gap-3`}>
+                    {
+                        data.tags?.split(', ').map((e, index) =>
+                            <span key={index} className='bg-[#f5f5f5] text-[#767676] font-normal px-2 capitalize'>{e}</span>
+                        )
+                    }
+                </div>
             </div>
-            <div className={`mt-3 flex 'justify-start' items-center flex-wrap gap-3`}>
-                {
-                    data.tags?.split(', ').map((e, index) =>
-                        <span key={index} className='bg-[#f5f5f5] text-[#767676] font-normal px-2 capitalize'>{e}</span>
-                    )
-                }
-            </div>
-        </div>
-
     )
 }
 

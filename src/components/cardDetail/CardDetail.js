@@ -13,18 +13,21 @@ import { addFavourite, deleteFavourite } from '../../redux/features/favourite';
 import { addDownloads } from '../../redux/features/downloads';
 
 
-function CardDetail({ setAlertText, setAlert, showAlert }) {
+function CardDetail({ showAlert }) {
     const [cardData, setCardData] = useState()
     const navigate = useNavigate()
     const previewId = useParams().id
     const [fav, setFav] = useState(false)
     const { user } = useSelector(state => state.authReducer)
     const dispatch = useDispatch()
+    const currentLocation = useLocation().pathname
 
-
-    // TODO masonry
     const shareCurrentUrl = () => {
-        const currentUrl = window.location.href;
+        let currentUrl = window.location.href;
+        if (!currentLocation.startsWith('/search')) {
+            currentUrl = `/preview${currentLocation.split('/preview')[1]}`
+        }
+
         if (navigator.share) {
             navigator.share({
                 title: 'Share the URL',
@@ -137,7 +140,7 @@ function CardDetail({ setAlertText, setAlert, showAlert }) {
             }
         }
         else {
-            showAlert('Signin first')
+            showAlert('Sign-in first!')
         }
     }
     return (
@@ -174,7 +177,7 @@ function CardDetail({ setAlertText, setAlert, showAlert }) {
                                     <div>
                                         <div className='flex justify-between items-center mb-5'>
                                             <h1 className='text-xl font-semibold text-[#3B4043]'>Download</h1>
-                                            <div className='flex flex-row justify-start items-center gap-3'>
+                                            <div className='flex flex-row justify-start items-center gap-5'>
                                                 <Share onClick={shareCurrentUrl} className='cursor-pointer' />
                                                 <Star onClick={onFavClick} size={27} className={`cursor-pointer text-amber-500 ${fav && "fill-amber-400"}`} />
                                             </div>

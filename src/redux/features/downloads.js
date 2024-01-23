@@ -7,10 +7,10 @@ export const downloadsSlice = createSlice({
     initialState,
     reducers: {
         createDownloads: (state, action) => {
-            console.log(action.payload);
+            // console.log(action.payload);
             let downlods = action.payload
             downlods = downlods.map(data => { return { ...data, key: nanoid() } })
-            console.log(downlods);
+            // console.log(downlods);
             state.push(...downlods)
         },
         deleteDownloads: (state, action) => {

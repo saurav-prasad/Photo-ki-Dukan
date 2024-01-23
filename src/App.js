@@ -103,6 +103,7 @@ function App() {
       element: <>
         <Header />
         <SearchBar />
+        <Trendings />
         <HistoFav showAlert={showAlert} type='favourite' />
       </>
     },
@@ -111,6 +112,7 @@ function App() {
       element: <>
         <Header />
         <SearchBar />
+        <Trendings />
         <HistoFav showAlert={showAlert} type='favourite' />
         <CardDetail showAlert={showAlert} />
       </>
@@ -120,6 +122,7 @@ function App() {
       element: <>
         <Header />
         <SearchBar />
+        <Trendings />
         <HistoFav type='downloads' />
       </>
     },
@@ -128,6 +131,7 @@ function App() {
       element: <>
         <Header />
         <SearchBar />
+        <Trendings />
         <HistoFav type='downloads' />
         <CardDetail showAlert={showAlert} />
       </>
@@ -142,8 +146,8 @@ function App() {
   return (
     <>
       <div className={`flex justify-center items-center fixed bottom-0 z-[100] w-full transition-all ${alert ? "translate-y-[0%]" : "translate-y-[100%]"}`}>
-        <div class="select-none mx-auto flex items-center px-4 py-2 mb-4 text-base rounded-full border-2 border-dotted border-[#ffffff] bg-[#4be568] text-gray-900 shadow-xl shadow-gray-900/20 focus:outline-none" role="alert">
-          <span class="font-medium">{alertText}</span>
+        <div className="select-none mx-auto flex items-center px-5 py-2 mb-4 text-base rounded-b-md border-x-[1px] border-t-[5px] border-[#ff2929] bg-[#f7f8f7] text-[#000000] shadow-[0px_5px_16px_#ff00007a]" role="alert">
+          <span className="font-medium">{alertText}</span>
         </div>
       </div >
 

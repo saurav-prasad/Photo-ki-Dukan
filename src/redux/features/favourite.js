@@ -7,10 +7,10 @@ export const FavouriteSlice = createSlice({
     initialState,
     reducers: {
         createFavourite: (state, action) => {
-            console.log(action.payload);
+            // console.log(action.payload);
             let favourite = action.payload
             favourite = favourite.map(data => { return { ...data, key: nanoid() } })
-            console.log(favourite);
+            // console.log(favourite);
             state.push(...favourite)
         },
         deleteFavourite: (state, action) => {

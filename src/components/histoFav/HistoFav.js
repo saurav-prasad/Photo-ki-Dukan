@@ -17,11 +17,9 @@ function HistoFav({ type, showAlert }) {
     const { user } = useSelector(state => state.authReducer)
     const navigate = useNavigate()
     const location = useLocation()
-    const [loader, setLoader] = useState(false)
 
     useEffect(() => {
         async function fetchData() {
-            setLoader(true)
             try {
                 if (histoFavState.length === 0) {
                     const imageData = await supabaseClient
@@ -30,10 +28,8 @@ function HistoFav({ type, showAlert }) {
                     // setData(sortArray(imageData.data))
                     dispatch(type === 'favourite' ? createFavourite(imageData.data) : createDownloads(imageData.data))
                 }
-                setLoader(false)
             } catch (error) {
                 console.log(error);
-                setLoader(false)
             }
         }
         fetchData()
@@ -50,7 +46,7 @@ function HistoFav({ type, showAlert }) {
     }, [user])
 
     return (
-        <div className={`md:mt-36 mt-20 absolute w-full`}>
+        <div className={`md:mt-26 mt-0 absolute w-full`}>
             <Slide triggerOnce direction='up' duration={250}>
                 <section className='text-white text-4xl md:text-5xl font-bold flex flex-col gap-2 mt-20 select-none'>
                     <span className='w-full text-center capitalize'>{type}</span>
@@ -61,21 +57,13 @@ function HistoFav({ type, showAlert }) {
                         {
                             data && data.map((image) =>
 
-                                <Card showAlert={showAlert} favBtn={type === 'favourite' ? true : false} alterValues={true} key={image.id} data={image} />
+                                <Card showAlert={showAlert} dwndTime={type === 'downloads' && true} favBtn={type === 'favourite' ? true : false} alterValues={true} key={image.id} data={image} />
                             )
-                        }
-                        {
-                            (loader && !data) &&
-                            <SkeletonTheme baseColor="#d4d4d4" highlightColor="#858383">
-                                {
-                                    Array.from({ length: 7 }).map((e, index) => <CardSkeleton key={index} />)
-                                }
-                            </SkeletonTheme>
                         }
                     </div>
                     {
-                        (!loader && data?.length <= 0) && <div className="md:h-[38vh] h-[55vh] flex justify-center items-center">
-                            <h1 className='text-center text-4xl font-semibold text-gray-900 '>No {type}</h1>
+                      data?.length <= 0 && <div className="md:h-[40.3vh] h-[45.5vh] flex justify-center items-center">
+                            <h1 className='text-center text-3xl md:text-4xl font-semibold text-gray-900 '>No {type}</h1>
                         </div>
                     }
                 </section>

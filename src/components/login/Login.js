@@ -45,7 +45,7 @@ export default function Login() {
                                 </svg>
                             </div>
                         </div>
-                        <Auth supabaseClient={supabaseClient} appearance={{ theme: ThemeSupa }} />
+                        <Auth  providers={['google']} supabaseClient={supabaseClient} appearance={{ theme: ThemeSupa }} />
                     </div>
                 </Zoom>
             </div>
@@ -53,7 +53,6 @@ export default function Login() {
     }
     else {
         dispatch(signIn(session.user))
-        // console.log(session);
         navigate('/')
         return (<></>)
     }
