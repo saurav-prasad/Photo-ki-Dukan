@@ -1,70 +1,97 @@
-# Getting Started with Create React App
+<img src="https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/9b9b2b09-da45-4da7-8d31-f587272b37d6" width="80px" height="80px"/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# Photo Ki Dukan
 
-In the project directory, you can run:
+This app houses a diverse collection of photos, providing users with the ability to find any image they desire. Whether you're searching for specific themes, subjects, or simply exploring, this app ensures a comprehensive and easily navigable repository of photos
 
-### `npm start`
+## Live demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Have a look of the app:
+https://photo-ki-dukan.vercel.app/
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Features
+List of some of the key features of the app:
 
-### `npm test`
+- Signin/Signup
+- Search photos
+- Favourite list of photos
+- History of downloads
+- Dynamic wallpaper
+- Download photos
+- Download differnt sizes of photos
+- Share photos
+- Google OAuth
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Tech Stack
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This app was built using the following technologies and tools:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Frontend:
+  - HTML
+  - CSS
+  - JavaScript
+  - ReactJS
+  - TailwindCSS
+  - React Router Dom
+  - Redux
+  - React Loading Skeleton
+  - React Awesome Reveal
+  - React Infinite Scroll Component
+  - Lucide React
+  
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Backend:
+  - Supabase
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- Hosting & Deployment:
+  - Vercel
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- Version Control:
+  - Git
+  - GitHub
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Screenshots
+- Desktop view
+  
+![Screenshot 2024-01-23 152306](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/fc9a1e41-9f54-4668-ac6d-ae89e44c6d56)
 
-## Learn More
+![Screenshot 2024-01-23 152315](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/60e0fb94-1574-459a-8858-bfe864c011d5)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![Screenshot 2024-01-23 152334](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/674fff29-95c6-4b45-838a-010412cab039)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![Screenshot 2024-01-23 152342](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/23b1ce39-7db2-4a75-b4bc-d86ce1a1eb58)
 
-### Code Splitting
+![Screenshot 2024-01-23 152347](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/866ba0e6-c70c-402e-bd25-300b6cc6c825)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![Screenshot 2024-01-23 152353](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/99d4a1cf-a314-41c5-8468-0bdea19b40db)
 
-### Analyzing the Bundle Size
+- Mobile View
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![Copy of Copy of Screenshot_20231105-231053_Chrome jpg (1)](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/2e78369f-2b82-4388-8061-06b8360c3bc9)
 
-### Making a Progressive Web App
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
 
-### Advanced Configuration
+![Copy of Copy of Screenshot_20231105-231053_Chrome jpg](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/288e0656-dd85-43ac-a8b9-a131a04c0c1e)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Environment Variables
 
-### Deployment
+To run this application, you will need to add the following environment variable to your .env.local file.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+`REACT_APP_PIXABAY_API_KEY` the pixabay api key.
+`REACT_APP_SUPABASE_API_KEY` the supabase api key.
 
-### `npm run build` fails to minify
+## Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+# Clone the repository
+git clone https://github.com/saurav-prasad/Photo-ki-Dukan.git
+
+# Install dependencies
+npm install
+
+# Start the development server
+npm start
