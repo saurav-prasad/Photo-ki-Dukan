@@ -73,7 +73,6 @@ function CardDetail({ showAlert }) {
                         tags: cardData?.tags
                     },
                 ]).select()
-            console.log(error);
             !error && dispatch(addDownloads(data[0]))
         } catch (error) {
             console.log(error);
