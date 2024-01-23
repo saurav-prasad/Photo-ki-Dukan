@@ -57,26 +57,25 @@ This app was built using the following technologies and tools:
 ## Screenshots
 - Desktop view
   
-![Screenshot 2024-01-12 195016](https://github.com/saurav-prasad/Sociol/assets/70149386/a791fd94-789f-48b9-8f09-839988360044)
+![Screenshot 2024-01-23 152306](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/fc9a1e41-9f54-4668-ac6d-ae89e44c6d56)
 
+![Screenshot 2024-01-23 152315](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/60e0fb94-1574-459a-8858-bfe864c011d5)
 
-![Screenshot 2024-01-12 195158](https://github.com/saurav-prasad/Sociol/assets/70149386/84135cbc-6ca6-438f-945d-e807b379a6a7)
+![Screenshot 2024-01-23 152334](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/674fff29-95c6-4b45-838a-010412cab039)
 
+![Screenshot 2024-01-23 152342](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/23b1ce39-7db2-4a75-b4bc-d86ce1a1eb58)
 
-![Screenshot 2024-01-12 195253](https://github.com/saurav-prasad/Sociol/assets/70149386/6b2d207e-67a4-4405-8e20-1c62980606ab)
+![Screenshot 2024-01-23 152347](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/866ba0e6-c70c-402e-bd25-300b6cc6c825)
 
-
-![Screenshot 2024-01-12 195314](https://github.com/saurav-prasad/Sociol/assets/70149386/91fd339b-2553-466c-920a-e819bee29a24)
-
-
-![Screenshot 2024-01-12 195454](https://github.com/saurav-prasad/Sociol/assets/70149386/c4f365ca-0cc8-46c2-bad8-14ea03e4af4c)
+![Screenshot 2024-01-23 152353](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/99d4a1cf-a314-41c5-8468-0bdea19b40db)
 
 - Mobile View
 
-![Copy of Screenshot_20231105-231053_Chrome jpg](https://github.com/saurav-prasad/Sociol/assets/70149386/eee588fe-de0c-4094-8a03-af9e8176dbe7)
+![Copy of Copy of Screenshot_20231105-231053_Chrome jpg (1)](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/2e78369f-2b82-4388-8061-06b8360c3bc9)
 
 
-![Copy of Screenshot_20231105-231053_Chrome jpg (1)](https://github.com/saurav-prasad/Sociol/assets/70149386/9d3a89f6-af17-4197-957a-fea307cce134)
+
+![Copy of Copy of Screenshot_20231105-231053_Chrome jpg](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/288e0656-dd85-43ac-a8b9-a131a04c0c1e)
 
 
 ## Installation
