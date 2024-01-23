@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import './header.css'
-import { AlignRight, Download, KeyRound, LogOut, Star, X } from 'lucide-react'
+import { AlignRight, Download, KeyRound, LogOut, Star, UserRoundPlus, X } from 'lucide-react'
 import { Slide } from 'react-awesome-reveal'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -121,8 +121,8 @@ export const HeaderMenu = ({ setToggleMenu, user, logOutUser }) => {
                     <span onClick={() => { navigate('/login'); setToggleMenu(false) }} className='flex justify-start items-center gap-1 rounded-sm transition-all font-medium hover:bg-[#f5f5f5] text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
                     <KeyRound /> Login
                     </span>
-                    <span onClick={() => { navigate('/login'); setToggleMenu(false) }} className='rounded-sm transition-all font-medium hover:bg-[#f5f5f5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
-                        Create Account
+                    <span onClick={() => { navigate('/login'); setToggleMenu(false) }} className='flex justify-start items-center gap-1 rounded-sm transition-all font-medium hover:bg-[#f5f5f5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
+                    <UserRoundPlus /> Create Account
                     </span>
                 </>
                 }
