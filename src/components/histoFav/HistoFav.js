@@ -53,7 +53,7 @@ function HistoFav({ type, showAlert }) {
                 </section>
 
                 <section className="bg-white mt-12 h-full">
-                    <div className="lg:mx-12 px-3 py-10 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 h-full">
+                    <div className="lg:mx-12 px-3 py-10 grid grid-cols-1 gap-3 gap-y-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 h-full">
                         {
                             data && data.map((image) =>
 
@@ -63,7 +63,7 @@ function HistoFav({ type, showAlert }) {
                     </div>
                     {
                       data?.length <= 0 && <div className="md:h-[40.3vh] h-[45.5vh] flex justify-center items-center">
-                            <h1 className='text-center text-3xl md:text-4xl font-semibold text-gray-900 '>No {type}</h1>
+                            <h1 className='text-center text-3xl md:text-4xl font-semibold text-gray-900 '>No {type}!</h1>
                         </div>
                     }
                 </section>
