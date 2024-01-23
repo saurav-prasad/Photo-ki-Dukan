@@ -77,6 +77,12 @@ This app was built using the following technologies and tools:
 
 ![Copy of Copy of Screenshot_20231105-231053_Chrome jpg](https://github.com/saurav-prasad/Photo-ki-Dukan/assets/70149386/288e0656-dd85-43ac-a8b9-a131a04c0c1e)
 
+## Environment Variables
+
+To run this application, you will need to add the following environment variable to your .env.local file.
+
+`REACT_APP_PIXABAY_API_KEY` the pixabay api key.
+`REACT_APP_SUPABASE_API_KEY` the supabase api key.
 
 ## Installation
 
