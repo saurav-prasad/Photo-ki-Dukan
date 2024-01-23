@@ -217,6 +217,7 @@ export const DownloadMenu = ({ data, addToDownloads }) => {
     const [selectSize, setSelectSize] = useState('small')
     const [downloadUrl, setDownloadUrl] = useState(data?.previewURL)
 
+
     const download = async () => {
         try {
             if (!downloadUrl) {
@@ -285,7 +286,7 @@ export const DownloadMenu = ({ data, addToDownloads }) => {
                     </div>
                 </div>
             </dl>
-            <button onClick={download} className='w-full text-center mt-5 md:mt-4 transition-all hover:bg-[#49b649] bg-[#4BC34B] py-3 rounded-md text-white font-semibold'>
+            <button onClick={download} className='w-full h-12 text-center mt-5 md:mt-4 transition-all hover:bg-[#49b649] bg-[#4BC34B] py-3 rounded-md text-white font-semibold'>
                 Download for free!
             </button>
         </>
