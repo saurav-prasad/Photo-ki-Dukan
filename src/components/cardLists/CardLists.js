@@ -40,6 +40,7 @@ page: page,
 per_page: perPage 
 },
  }) 
+            setpage(page + 1);
 setData(imageData.data.hits) 
 settotalPages(Math.ceil((imageData.data.totalHits / perPage))) 
 setLoader(false)
