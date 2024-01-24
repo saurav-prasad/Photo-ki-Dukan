@@ -65,7 +65,8 @@ fetchData()
                     per_page: perPage
                 },
             })
-           setpage(page + 1); setData(data.concat(imageData.data.hits))
+           setpage(page + 1);
+ setData(data.concat(imageData.data.hits))
             settotalPages(Math.ceil((imageData.data.totalHits / perPage)))
             setLoader(false)
         } catch (error) {
