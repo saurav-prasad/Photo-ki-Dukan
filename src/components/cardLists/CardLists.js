@@ -98,7 +98,7 @@ fetchData()
                     <InfiniteScroll
                         dataLength={data.length}
                         next={fetchMoreData}
-                        hasMore={page <= totalPages}
+                        hasMore={page < totalPages}
                         loader={() => { setLoader(true) }}
                     >
                         {/* cards */}
