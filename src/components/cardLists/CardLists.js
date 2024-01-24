@@ -56,7 +56,7 @@ fetchData()
     // load more data for infinite scroll
     const fetchMoreData = async () => {
         try {
-            setpage(page + 1);
+            
 
             const imageData = await searchPhoto.get('', {
                 params: {
@@ -65,7 +65,7 @@ fetchData()
                     per_page: perPage
                 },
             })
-            setData(data.concat(imageData.data.hits))
+           setpage(page + 1); setData(data.concat(imageData.data.hits))
             settotalPages(Math.ceil((imageData.data.totalHits / perPage)))
             setLoader(false)
         } catch (error) {
