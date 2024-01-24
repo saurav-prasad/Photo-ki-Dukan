@@ -30,8 +30,6 @@ export const downloadsSlice = createSlice({
     }
 })
 
-
-
 export const { createDownloads, deleteDownloads, addDownloads, clearDownloads } = downloadsSlice.actions
 
 export default downloadsSlice.reducer

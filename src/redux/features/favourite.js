@@ -30,8 +30,6 @@ export const FavouriteSlice = createSlice({
     }
 })
 
-
-
 export const { createFavourite, deleteFavourite, addFavourite,clearFavourite } = FavouriteSlice.actions
 
 export default FavouriteSlice.reducer

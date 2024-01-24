@@ -21,7 +21,10 @@ function CardDetail({ showAlert }) {
     const { user } = useSelector(state => state.authReducer)
     const dispatch = useDispatch()
     const currentLocation = useLocation().pathname
+    const [imageLoad, setimageLoad] = useState()
+    const location = useLocation()
 
+    // share functionality
     const shareCurrentUrl = () => {
         let currentUrl = window.location.href;
         if (!currentLocation.startsWith('/search')) {
@@ -40,8 +43,7 @@ function CardDetail({ showAlert }) {
         }
     };
 
-    const [imageLoad, setimageLoad] = useState()
-
+    // adding an image to favourite list
     const addToFav = async () => {
         try {
             const { data, error } = await supabaseClient
@@ -61,8 +63,10 @@ function CardDetail({ showAlert }) {
         }
     };
 
+    // adding an image to download list
     const addToDownloads = async () => {
         try {
+            // check if image existis in download list
             const imageData = await supabaseClient
                 .from('downloads')
                 .select('*')
@@ -70,6 +74,7 @@ function CardDetail({ showAlert }) {
                 .eq('image_id', cardData.id)
 
             if (imageData.data.length <= 0) {
+                // if not exist
                 const { data, error } = await supabaseClient
                     .from('downloads')
                     .insert([
@@ -82,6 +87,8 @@ function CardDetail({ showAlert }) {
                     ]).select()
                 !error && dispatch(addDownloads(data[0]))
             } else {
+                // if exist in download list
+                // remove from downloads
                 const { error } = await supabaseClient
                     .from('downloads')
                     .delete()
@@ -89,7 +96,7 @@ function CardDetail({ showAlert }) {
                     .eq('image_id', cardData.id)
 
                 !error && dispatch(deleteDownloads({ id: cardData.id }))
-
+                // add to downloads
                 const downloadedData = await supabaseClient
                     .from('downloads')
                     .insert([
@@ -107,6 +114,8 @@ function CardDetail({ showAlert }) {
             console.log(error);
         }
     };
+
+    // removing an image from favourite list
     const removeFromFav = async () => {
         try {
 
@@ -123,21 +132,19 @@ function CardDetail({ showAlert }) {
         }
     };
 
-    const location = useLocation()
 
     const handleModalOpen = () => {
         location.pathname.split('/preview')[0].startsWith('/search') && navigate(location.pathname.split('/preview')[0])
         !location.pathname.split('/preview')[0].startsWith('/search') && navigate('/')
         location.pathname.split('/preview')[0].startsWith('/favourite') && navigate('/favourite')
         location.pathname.split('/preview')[0].startsWith('/downloads') && navigate('/downloads')
-
-        console.log();
     };
 
     const handleZoomClick = (event) => {
         event.stopPropagation();
     };
 
+    // setting the datas
     useEffect(() => {
         async function fetchData() {
             try {
@@ -156,6 +163,7 @@ function CardDetail({ showAlert }) {
         fetchData()
     }, [previewId])
 
+    // on favourite icon click
     const onFavClick = () => {
         if (user) {
             if (fav) {
@@ -171,6 +179,7 @@ function CardDetail({ showAlert }) {
             showAlert('Sign-in first!')
         }
     }
+
     return (
         <>
             <div onClick={handleModalOpen} className='transition-all z-10 overflow-y-hidden flex justify-center items-center fixed bg-[#00000080] top-0 bottom-0 left-0 right-0 bg-[rgba(0, 0, 0, 0.50)]'>
@@ -178,9 +187,11 @@ function CardDetail({ showAlert }) {
                     <div onClick={handleZoomClick} className={`detailSubContainer bg-white md:rounded-lg md:max-w-[95%] md:max-h-[80%]`}>
                         {/* header */}
                         <div className='flex justify-between items-center h-16 px-5 bg-[#F5F5F5] rounded-t-lg'>
+                            {/* preview id */}
                             <h1 onClick={() => { showAlert("lfsadl") }} className='text-[#3B4043] font-medium text-xl'>
                                 Preview ID: {previewId}
                             </h1>
+                            {/* modal close icon */}
                             <div onClick={() => handleModalOpen()} className='cursor-pointer'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
                                     <path d="M11.8451 20.3409L20.2303 11.9557M20.2303 20.3409L11.8451 11.9557M11.5933 30.9631H20.4822C27.8896 30.9631 30.8525 28.0002 30.8525 20.5928V11.7039C30.8525 4.29646 27.8896 1.3335 20.4822 1.3335H11.5933C4.18586 1.3335 1.2229 4.29646 1.2229 11.7039V20.5928C1.2229 28.0002 4.18586 30.9631 11.5933 30.9631Z" stroke="#3B4043" strokeWidth="2.22138" strokeLinecap="round" strokeLinejoin="round" />
@@ -190,7 +201,7 @@ function CardDetail({ showAlert }) {
                         {/* image and image details */}
                         <div className='px-1 md:px-4 md:py-6 py-5'>
                             <div className='flex flex-col md:flex-row gap-5'>
-                                {/* imgaes */}
+                                {/* imagae */}
                                 <div className={`flex-1 ${!imageLoad && 'md:w-[50vw]'}`}>
                                     {
                                         <img onLoad={() => { setimageLoad(true) }} className=' object-contain w-full max-h-[80vh]  rounded-md' src={cardData?.largeImageURL} alt="" />
@@ -222,6 +233,7 @@ function CardDetail({ showAlert }) {
                                     </div>
                                 </aside>
                             </div>
+                            {/* image tags */}
                             {cardData?.tags && <div className='px-1 mt-7 md:mt-5 flex flex-row justify-start flex-wrap items-center gap-2 '>
                                 <h1 className='font-semibold text-[#3B4043]'>Tags:</h1>
                                 {
@@ -245,7 +257,7 @@ export const DownloadMenu = ({ data, addToDownloads }) => {
     const [selectSize, setSelectSize] = useState('small')
     const [downloadUrl, setDownloadUrl] = useState(data?.previewURL)
 
-
+    // image download function
     const download = async () => {
         try {
             if (!downloadUrl) {
@@ -320,12 +332,11 @@ export const DownloadMenu = ({ data, addToDownloads }) => {
         </>
     )
 }
-
+// images informations
 export const ImageInfos = ({ user, userId, type, views, downloads, likes }) => {
     return (
         <>
             <div className='grid grid-cols-3 gap-4'>
-
                 <div className='flex flex-col justify-center items-start'>
                     <span className='font-medium text-sm text-[#717579] truncate'>User</span>
                     <span className='font-semibold text-base text-[#3B4043] truncate'>{sliceString(user, 10)}</span>

@@ -1,4 +1,3 @@
-// import './index.css'
 import { useState, useEffect } from 'react'
 import { Auth } from '@supabase/auth-ui-react'
 import { ThemeSupa } from '@supabase/auth-ui-shared'
@@ -36,7 +35,7 @@ export default function Login() {
             <div onClick={() => navigate(-1)} className='transition-all z-10 overflow-y-hidden flex justify-center items-center fixed bg-[#00000080] top-0 bottom-0 left-0 right-0 bg-[rgba(0, 0, 0, 0.50)]'>
                 <Zoom duration={200} className='loginContainer z-20 '>
                     <div onClick={handleZoomClick} className='loginSubContainer py-7 px-5 bg-[#F5F5F5] rounded-lg sm:min-w-[70vw] md:min-w-[50vw] lg:min-w-[40vw] xl:min-w-[30vw] sm:rounded-lg sm:max-w-[10%] sm:max-h-[80%]'>
-                        {/* header */}
+                        {/* modal close icon */}
                         <div className='flex justify-end items-center h-16 px-5 bg-[#F5F5F5] rounded-t-lg'>
                             <div onClick={() => navigate('/')} className='cursor-pointer'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="33" viewBox="0 0 32 33" fill="none">
@@ -44,13 +43,14 @@ export default function Login() {
                                 </svg>
                             </div>
                         </div>
-                        <Auth  providers={['google']} supabaseClient={supabaseClient} appearance={{ theme: ThemeSupa }} />
+                        <Auth providers={['google']} supabaseClient={supabaseClient} appearance={{ theme: ThemeSupa }} />
                     </div>
                 </Zoom>
             </div>
         )
     }
     else {
+        // add the user to redux store
         dispatch(signIn(session.user))
         navigate('/')
         return (<></>)

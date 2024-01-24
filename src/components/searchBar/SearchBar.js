@@ -2,14 +2,11 @@ import React, { useState } from 'react'
 import './searchBar.css'
 import { Search } from 'lucide-react'
 import { useNavigate, useParams } from 'react-router-dom'
-import runDebounce from '../../functions/debounce'
 
 function SearchBar() {
     const location = useParams().query
     const navigate = useNavigate()
     const [data, setData] = useState('')
-
-
 
     let timer = null
     const onClick = (e) => {

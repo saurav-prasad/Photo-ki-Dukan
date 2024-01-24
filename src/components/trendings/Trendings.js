@@ -3,11 +3,13 @@ import { useNavigate } from 'react-router-dom'
 
 function Trendings() {
     const navigate = useNavigate()
+    
     const onClick = (e) => {
         navigate(`/search/${e}`)
     }
 
     const list = ['flowers', 'love', 'forest', 'river','rose']
+
     return (
         <header className='mx-auto pt-8 w-fit'>
             <div className='headerContainer flex justify-start items-center gap-1 rounded-lg px-3 py-2'>

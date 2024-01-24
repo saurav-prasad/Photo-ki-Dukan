@@ -12,7 +12,6 @@ import InfiniteScroll from 'react-infinite-scroll-component'
 function CardLists() {
     const navigate = useNavigate()
     const imageQuery = useParams().query
-
     const perPage = 20
     const [data, setData] = useState([])
     const [page, setpage] = useState(1)
@@ -21,10 +20,13 @@ function CardLists() {
     const [bottomPosition, setBottomPosition] = useState(false)
 
     const search = ['Digital', 'Computer', 'Codierung', 'Tech', 'Netz', 'Code', 'Finanzieren', 'Marketing']
+
+
     const onClick = (e) => {
         navigate(`/search/${e}`)
     }
 
+    // images loader
     useEffect(() => {
         async function fetchData() {
             setBottomPosition(false)
@@ -51,6 +53,7 @@ function CardLists() {
         fetchData()
     }, [imageQuery])
 
+    // load more data for infinite scroll
     const fetchMoreData = async () => {
         try {
             setpage(page + 1);
@@ -74,11 +77,13 @@ function CardLists() {
     return (
         <div className={`md:mt-10 mt-5 absolute w-full ${(bottomPosition) ? 'bottom-0' : ""}`}>
             <Slide triggerOnce direction='up' duration={250}>
+                {/* result name */}
                 <section className='text-white text-4xl md:text-5xl font-bold flex flex-col gap-2 mt-20 select-none'>
                     <span className='w-full text-center'>Results: {imageQuery}</span>
                 </section>
 
                 <section className="bg-white mt-12 h-full">
+                    {/* shortcut search */}
                     <div className='cardListsTabs bg-[#F5F5F5] flex flex-row justify-start items-center gap-5 px-3 py-5'>
                         {
                             search.map((e, index) =>
@@ -88,12 +93,14 @@ function CardLists() {
                             )
                         }
                     </div>
+                    {/* infinite scrolling  */}
                     <InfiniteScroll
                         dataLength={data.length}
                         next={fetchMoreData}
                         hasMore={page <= totalPages}
                         loader={() => { setLoader(true) }}
                     >
+                        {/* cards */}
                         <div className="lg:mx-12 px-3 py-10 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 h-full">
                             {
                                 data && data.map((image) =>
@@ -111,7 +118,7 @@ function CardLists() {
                         </div>
                     </InfiniteScroll>
                     {
-                        //lg:h-[35vh] md:h-[40vh] sm:h-[34vh] h-[30vh]
+                        // if image not found
                         bottomPosition && <div className="md:h-[33vh] h-[30vh] flex justify-center items-center">
                             <h1 className='text-center text-4xl font-semibold text-gray-900 '>Image not found!</h1>
                         </div>

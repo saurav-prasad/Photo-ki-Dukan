@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import supabaseClient from '../../functions/supabaseClient';
 import sortArray from '../../functions/sortArray'
-import { SkeletonTheme } from 'react-loading-skeleton';
-import { CardSkeleton } from '../cardLists/CardLists';
 import Card from '../card/Card';
 import { Slide } from 'react-awesome-reveal';
 import { useDispatch, useSelector } from 'react-redux';
@@ -19,6 +17,7 @@ function HistoFav({ type, showAlert }) {
     const location = useLocation()
     const [bottomPosition, setBottomPosition] = useState(false)
 
+    // fetching data from database and adding it to the redux store
     useEffect(() => {
         async function fetchData() {
             setBottomPosition(false)
@@ -39,10 +38,12 @@ function HistoFav({ type, showAlert }) {
         fetchData()
     }, [location])
 
+    // fetching data from redux store
     useEffect(() => {
         setData(sortArray(histoFavState))
     }, [histoFavState, location])
 
+    // if logged out
     useEffect(() => {
         if (!user) {
             navigate('/')
@@ -50,12 +51,13 @@ function HistoFav({ type, showAlert }) {
     }, [user])
 
     return (
-        <div className={`md:mt-10 mt-5 absolute w-full ${(data?.length ===1 ) && 'bottom-0'} ${(data?.length <= 4) && 'sm:bottom-0'} ${(bottomPosition || data?.length <= 0) ? 'bottom-0' : ""}`}>
+        <div className={`md:mt-10 mt-5 absolute w-full ${(data?.length === 1) && 'bottom-0'} ${(data?.length <= 4) && 'sm:bottom-0'} ${(bottomPosition || data?.length <= 0) ? 'bottom-0' : ""}`}>
             <Slide direction='up' duration={250}>
+                {/* header */}
                 <section className='text-white text-4xl md:text-5xl font-bold flex flex-col gap-2 mt-20 select-none'>
                     <span className='w-full text-center capitalize'>{type}</span>
                 </section>
-
+                {/* cards */}
                 <section className="bg-white mt-12 h-full">
                     <div className="lg:mx-12 px-3 py-10 grid grid-cols-1 gap-3 gap-y-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 h-full">
                         {
@@ -65,6 +67,7 @@ function HistoFav({ type, showAlert }) {
                             )
                         }
                     </div>
+                    {/* if image not available */}
                     {
                         data?.length <= 0 && <div className="md:h-[33vh] h-[30vh] flex justify-center items-center">
                             <h1 className='text-center text-3xl md:text-4xl font-semibold text-gray-900 '>No {type}!</h1>
