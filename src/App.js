@@ -157,7 +157,7 @@ function App() {
           style={{ backgroundImage: `url(${bgImage})` }}
           className="bg-[#af977f] bg-cover bg-center bg-no-repeat absolute h-screen top-0 bottom-0 left-0 right-0 brightness-[0.85] z-[-1]" />
         {/* components */}
-        <div className='z-[10]'>
+        <div className='z-[10] min-h-svh'>
 
 
           <RouterProvider router={router} />

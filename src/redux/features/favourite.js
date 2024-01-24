@@ -24,11 +24,14 @@ export const FavouriteSlice = createSlice({
             }
             state.push(favourite)
         },
+        clearFavourite: (state, action) => {
+            state.length = 0
+        },
     }
 })
 
 
 
-export const { createFavourite, deleteFavourite, addFavourite } = FavouriteSlice.actions
+export const { createFavourite, deleteFavourite, addFavourite,clearFavourite } = FavouriteSlice.actions
 
 export default FavouriteSlice.reducer

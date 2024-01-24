@@ -18,6 +18,7 @@ function CardLists() {
     const [page, setpage] = useState(1)
     const [totalPages, settotalPages] = useState(1);
     const [loader, setLoader] = useState(false)
+    const [bottomPosition, setBottomPosition] = useState(false)
 
     const search = ['Digital', 'Computer', 'Codierung', 'Tech', 'Netz', 'Code', 'Finanzieren', 'Marketing']
     const onClick = (e) => {
@@ -26,7 +27,7 @@ function CardLists() {
 
     useEffect(() => {
         async function fetchData() {
-            // console.log("object");
+            setBottomPosition(false)
             setData([])
             setLoader(true)
             try {
@@ -39,11 +40,12 @@ function CardLists() {
                 })
                 setData(imageData.data.hits)
                 settotalPages(Math.ceil((imageData.data.totalHits / perPage)))
-                // console.log(imageData.data);
+                if (imageData.data.hits.length <= 0) { setBottomPosition(true) }
                 setLoader(false)
             } catch (error) {
                 console.log(error);
                 setLoader(false)
+                setBottomPosition(true)
             }
         }
         fetchData()
@@ -70,7 +72,7 @@ function CardLists() {
     };
 
     return (
-        <div className="md:mt-10 mt-5 absolute w-full">
+        <div className={`md:mt-10 mt-5 absolute w-full ${(bottomPosition) ? 'bottom-0' : ""}`}>
             <Slide triggerOnce direction='up' duration={250}>
                 <section className='text-white text-4xl md:text-5xl font-bold flex flex-col gap-2 mt-20 select-none'>
                     <span className='w-full text-center'>Results: {imageQuery}</span>
@@ -109,7 +111,8 @@ function CardLists() {
                         </div>
                     </InfiniteScroll>
                     {
-                        data?.length <= 0 && <div className="h-[55vh] flex justify-center items-center">
+                        //lg:h-[35vh] md:h-[40vh] sm:h-[34vh] h-[30vh]
+                        bottomPosition && <div className="md:h-[33vh] h-[30vh] flex justify-center items-center">
                             <h1 className='text-center text-4xl font-semibold text-gray-900 '>Image not found!</h1>
                         </div>
                     }

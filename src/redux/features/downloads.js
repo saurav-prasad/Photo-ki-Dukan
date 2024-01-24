@@ -24,11 +24,14 @@ export const downloadsSlice = createSlice({
             }
             state.push(downlods)
         },
+        clearDownloads: (state, action) => {
+            state.length = 0
+        },
     }
 })
 
 
 
-export const { createDownloads, deleteDownloads, addDownloads } = downloadsSlice.actions
+export const { createDownloads, deleteDownloads, addDownloads, clearDownloads } = downloadsSlice.actions
 
 export default downloadsSlice.reducer

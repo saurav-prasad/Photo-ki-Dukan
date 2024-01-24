@@ -247,7 +247,7 @@ export const DownloadMenu = ({ data, addToDownloads }) => {
                         {
                             selectSize === 'small' ? <div className='rounded-full bg-[#4BC34B] w-4 h-4 flex justify-center items-center'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 10 10" fill="none">
-                                    <path d="M8.0709 3.19971L3.99837 7.27224L2.14722 5.42109" stroke="white" stroke-width="1.48092" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.0709 3.19971L3.99837 7.27224L2.14722 5.42109" stroke="white" strokeWidth="1.48092" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </div> :
                                 <div className='rounded-full bg-white w-4 h-4 flex justify-center items-center border border-[#DEE8F4]' />
@@ -262,7 +262,7 @@ export const DownloadMenu = ({ data, addToDownloads }) => {
                         {
                             selectSize === 'medium' ? <div className='rounded-full bg-[#4BC34B] w-4 h-4 flex justify-center items-center'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 10 10" fill="none">
-                                    <path d="M8.0709 3.19971L3.99837 7.27224L2.14722 5.42109" stroke="white" stroke-width="1.48092" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.0709 3.19971L3.99837 7.27224L2.14722 5.42109" stroke="white" strokeWidth="1.48092" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </div> :
                                 <div className='rounded-full bg-white w-4 h-4 flex justify-center items-center border border-[#DEE8F4]' />
@@ -277,7 +277,7 @@ export const DownloadMenu = ({ data, addToDownloads }) => {
                         {
                             selectSize === 'large' ? <div className='rounded-full bg-[#4BC34B] w-4 h-4 flex justify-center items-center'>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 10 10" fill="none">
-                                    <path d="M8.0709 3.19971L3.99837 7.27224L2.14722 5.42109" stroke="white" stroke-width="1.48092" stroke-linecap="round" stroke-linejoin="round" />
+                                    <path d="M8.0709 3.19971L3.99837 7.27224L2.14722 5.42109" stroke="white" strokeWidth="1.48092" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg>
                             </div> :
                                 <div className='rounded-full bg-white w-4 h-4 flex justify-center items-center border border-[#DEE8F4]' />

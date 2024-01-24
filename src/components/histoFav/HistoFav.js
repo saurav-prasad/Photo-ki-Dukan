@@ -17,19 +17,23 @@ function HistoFav({ type, showAlert }) {
     const { user } = useSelector(state => state.authReducer)
     const navigate = useNavigate()
     const location = useLocation()
+    const [bottomPosition, setBottomPosition] = useState(false)
 
     useEffect(() => {
         async function fetchData() {
+            setBottomPosition(false)
             try {
                 if (histoFavState.length === 0) {
                     const imageData = await supabaseClient
                         .from(type)
                         .select('*')
-                    // setData(sortArray(imageData.data))
+                        .eq('user_id', user?.id)
+                    if (imageData.data.length <= 0) { setBottomPosition(true) }
                     dispatch(type === 'favourite' ? createFavourite(imageData.data) : createDownloads(imageData.data))
                 }
             } catch (error) {
                 console.log(error);
+                setBottomPosition(true)
             }
         }
         fetchData()
@@ -46,7 +50,7 @@ function HistoFav({ type, showAlert }) {
     }, [user])
 
     return (
-        <div className={`md:mt-26 mt-0 absolute w-full`}>
+        <div className={`md:mt-10 mt-5 absolute w-full ${(data?.length ===1 ) && 'bottom-0'} ${(data?.length <= 4) && 'sm:bottom-0'} ${(bottomPosition || data?.length <= 0) ? 'bottom-0' : ""}`}>
             <Slide triggerOnce direction='up' duration={250}>
                 <section className='text-white text-4xl md:text-5xl font-bold flex flex-col gap-2 mt-20 select-none'>
                     <span className='w-full text-center capitalize'>{type}</span>
@@ -62,7 +66,7 @@ function HistoFav({ type, showAlert }) {
                         }
                     </div>
                     {
-                      data?.length <= 0 && <div className="md:h-[40.3vh] h-[45.5vh] flex justify-center items-center">
+                        data?.length <= 0 && <div className="md:h-[33vh] h-[30vh] flex justify-center items-center">
                             <h1 className='text-center text-3xl md:text-4xl font-semibold text-gray-900 '>No {type}!</h1>
                         </div>
                     }
