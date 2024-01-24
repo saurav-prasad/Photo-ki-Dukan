@@ -52,7 +52,7 @@ function Card({ data, alterValues, favBtn, showAlert, dwndTime }) {
                         />
                         {favBtn && <Star onClick={onFavClick} size={30} className={`cursor-pointer absolute top-2 right-2 text-amber-500 fill-amber-400 z-[6]`} />}
                         {dwndTime &&
-                            <span className='absolute top-0 right-0 select-none text-xs font-medium text-slate-500 bg-white pl-1 rounded-l-lg text-center'>{timePassed(data.timestamp)} ago</span>
+                            <span className='absolute top-0 right-0 select-none text-xs font-medium text-slate-500 bg-white pl-1 rounded-l-lg text-center pb-[0.1rem]'>{timePassed(data.timestamp)} ago</span>
                         }
                     </div>
                     <div className={`mt-3 flex 'justify-start' items-center flex-wrap gap-3`}>
