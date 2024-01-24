@@ -144,8 +144,8 @@ function App() {
   ])
   return (
     <>
-      <div className={`flex justify-center items-center fixed bottom-0 z-[100] w-full transition-all ${alert ? "translate-y-[0%]" : "translate-y-[100%]"}`}>
-        <div className="select-none mx-auto flex items-center px-4 py-2 mb-4 text-lg rounded-b-md border-x-[1px] border-t-[5px] border-[#ff2929] bg-[#f7f8f7] text-[#000000] shadow-[0px_5px_16px_#ff00007a]" role="alert">
+      <div className={`flex justify-center items-center fixed bottom-0 z-[100] w-full transition-all duration-300 ${alert ? "translate-y-[0%]" : "translate-y-[150%]"}`}>
+        <div className="select-none mx-auto flex items-center px-4 py-2 mb-4 text-lg rounded-b-md rounded-t-sm border-t-[5px] border-[#ff2929] bg-[#f7f8f7] text-[#000000] shadow-[0px_5px_16px_#ff00007a]" role="alert">
           <span className="font-medium flex justify-center items-center gap-1"><AlertCircle size={17} strokeWidth={2} />{alertText}</span>
         </div>
       </div >
