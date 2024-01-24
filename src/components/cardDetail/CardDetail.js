@@ -10,7 +10,7 @@ import { Share, Star } from 'lucide-react';
 import supabaseClient from '../../functions/supabaseClient';
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavourite, deleteFavourite } from '../../redux/features/favourite';
-import { addDownloads } from '../../redux/features/downloads';
+import { addDownloads, deleteDownloads } from '../../redux/features/downloads';
 
 
 function CardDetail({ showAlert }) {
@@ -63,17 +63,46 @@ function CardDetail({ showAlert }) {
 
     const addToDownloads = async () => {
         try {
-            const { data, error } = await supabaseClient
+            const imageData = await supabaseClient
                 .from('downloads')
-                .insert([
-                    {
-                        image_id: cardData.id,
-                        user_id: user.id,
-                        image_url: cardData?.largeImageURL,
-                        tags: cardData?.tags
-                    },
-                ]).select()
-            !error && dispatch(addDownloads(data[0]))
+                .select('*')
+                .eq('user_id', user?.id)
+                .eq('image_id', cardData.id)
+
+            if (imageData.data.length <= 0) {
+                const { data, error } = await supabaseClient
+                    .from('downloads')
+                    .insert([
+                        {
+                            image_id: cardData.id,
+                            user_id: user.id,
+                            image_url: cardData?.largeImageURL,
+                            tags: cardData?.tags
+                        },
+                    ]).select()
+                !error && dispatch(addDownloads(data[0]))
+            } else {
+                const { error } = await supabaseClient
+                    .from('downloads')
+                    .delete()
+                    .eq('user_id', user.id)
+                    .eq('image_id', cardData.id)
+
+                !error && dispatch(deleteDownloads({ id: cardData.id }))
+
+                const downloadedData = await supabaseClient
+                    .from('downloads')
+                    .insert([
+                        {
+                            image_id: cardData.id,
+                            user_id: user.id,
+                            image_url: cardData?.largeImageURL,
+                            tags: cardData?.tags
+                        },
+                    ]).select()
+                !downloadedData.error && dispatch(addDownloads(downloadedData.data[0]))
+            }
+
         } catch (error) {
             console.log(error);
         }

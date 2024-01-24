@@ -11,7 +11,7 @@ import { clearFavourite } from '../../redux/features/favourite'
 import sliceString from '../../functions/sliceString'
 
 
-function Header() {
+function Header({ showAlert }) {
     const [showUser, setShowUser] = useState(false)
     const dispatch = useDispatch()
 
@@ -44,6 +44,7 @@ function Header() {
             dispatch(clearDownloads())
             dispatch(clearFavourite())
             dispatch(signOut())
+            showAlert('Logged out!')
             // console.log(a);
         } catch (error) {
             console.log(error);

@@ -51,7 +51,7 @@ function HistoFav({ type, showAlert }) {
 
     return (
         <div className={`md:mt-10 mt-5 absolute w-full ${(data?.length ===1 ) && 'bottom-0'} ${(data?.length <= 4) && 'sm:bottom-0'} ${(bottomPosition || data?.length <= 0) ? 'bottom-0' : ""}`}>
-            <Slide triggerOnce direction='up' duration={250}>
+            <Slide direction='up' duration={250}>
                 <section className='text-white text-4xl md:text-5xl font-bold flex flex-col gap-2 mt-20 select-none'>
                     <span className='w-full text-center capitalize'>{type}</span>
                 </section>
