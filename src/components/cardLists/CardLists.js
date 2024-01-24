@@ -26,7 +26,25 @@ function CardLists() {
         navigate(`/search/${e}`)
     }
 
-   // images loader useEffect(() => { async function fetchData() { setBottomPosition(false) setData([]) setLoader(true) try { const imageData = await searchPhoto.get('', { params: { q: imageQuery, page: page, per_page: perPage }, }) setData(imageData.data.hits) settotalPages(Math.ceil((imageData.data.totalHits / perPage))) setLoader(false) } catch (error) { console.log(error); setLoader(false) setBottomPosition(true) } } fetchData() }, [imageQuery]) 
+   // images loader 
+useEffect(() => { 
+async function fetchData() { 
+setBottomPosition(false)
+ setData([]) 
+setLoader(true) 
+try { 
+const imageData = await searchPhoto.get('', { params: { q: imageQuery, page: page, per_page: perPage }, }) 
+setData(imageData.data.hits) 
+settotalPages(Math.ceil((imageData.data.totalHits / perPage))) 
+setLoader(false)
+ } catch (error) { 
+console.log(error); 
+setLoader(false) 
+setBottomPosition(true) 
+} 
+} 
+fetchData() 
+}, [imageQuery]) 
 
     // load more data for infinite scroll
     const fetchMoreData = async () => {
