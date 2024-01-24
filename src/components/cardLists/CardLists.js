@@ -33,7 +33,13 @@ setBottomPosition(false)
  setData([]) 
 setLoader(true) 
 try { 
-const imageData = await searchPhoto.get('', { params: { q: imageQuery, page: page, per_page: perPage }, }) 
+const imageData = await searchPhoto.get('', { 
+params: { 
+q: imageQuery, 
+page: page, 
+per_page: perPage 
+},
+ }) 
 setData(imageData.data.hits) 
 settotalPages(Math.ceil((imageData.data.totalHits / perPage))) 
 setLoader(false)
