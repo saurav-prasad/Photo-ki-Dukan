@@ -30,7 +30,7 @@ function App() {
   }
 
   // images search query
-  const bgImageSearchQuery = ['flower', 'art', 'animal', 'hide', 'monkey', 'love', 'forest', 'river', 'rose', 'lights', 'rain', 'blossom', 'dogs', 'landscape', 'cat', 'texture', 'object', 'blackrose', 'kids', 'nebula', 'tree', 'dark', 'black and white', 'dew', 'road', 'dirty', 'gorilla', 'horse', 'elephant', 'wolf', 'illustrations', 'autumn leaf', 'hollow', 'birds', 'crow', 'crows', 'bulb', 'street', 'old', 'donkey', 'cow', 'cattle', 'grazing', 'pastures', 'lama', 'monk', 'Buddhism', 'temple', 'arches', 'architecture', 'cave', 'sandstone', 'benagil', 'canyon', 'stones', 'books', 'ancient', 'metal', 'pyrites', 'minerals', 'coast', 'Lake Sunset trees', 'sunset trees', 'sunset forest', 'sunset road', 'field', 'Mountain landscape','mushrooms, 'tree trunk','turtle','flora','Cherry Blossoms','sakura',]
+  const bgImageSearchQuery = ['flower', 'art', 'animal', 'hide', 'monkey', 'love', 'forest', 'river', 'rose', 'lights', 'rain', 'blossom', 'dogs', 'landscape', 'cat', 'texture', 'object', 'blackrose', 'kids', 'nebula', 'tree', 'dark', 'black and white', 'dew', 'road', 'dirty', 'gorilla', 'horse', 'elephant', 'wolf', 'illustrations', 'autumn leaf', 'hollow', 'birds', 'crow', 'crows', 'bulb', 'street', 'old', 'donkey', 'cow', 'cattle', 'grazing', 'pastures', 'lama', 'monk', 'Buddhism', 'temple', 'arches', 'architecture', 'cave', 'sandstone', 'benagil', 'canyon', 'stones', 'books', 'ancient', 'metal', 'pyrites', 'minerals', 'coast', 'Lake Sunset trees', 'sunset trees', 'sunset forest', 'sunset road', 'field', 'Mountain landscape', 'mushrooms', 'tree trunk', 'turtle', 'flora', 'Cherry Blossoms', 'sakura',]
 
   // getting the image by query
   useEffect(() => {
@@ -153,10 +153,6 @@ function App() {
         <ScrollToTop />
       </div>
       <div className='relative h-full'>
-
-        {/* <div className='f cursor-pointer fixed bottom-[50px] right-0 w-fit bg-red-100 p-2 rounded-full z-[100]'>
-          <ArrowUpFromDot size={30} className='' />
-        </div> */}
 
         {/* background image */}
         <div
