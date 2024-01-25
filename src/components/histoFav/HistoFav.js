@@ -60,8 +60,8 @@ function HistoFav({ type, showAlert }) {
                 <span className='w-full text-center capitalize'>{type}</span>
             </section>
             {/* cards */}
-            <section className="bg-white mt-12 h-full pb-7">
-                <div className="lg:mx-12 px-3 py-10 grid grid-cols-1 gap-3 gap-y-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 h-full">
+            <section className="bg-white mt-12 h-full">
+                <div className="lg:mx-12 px-3 py-10 grid grid-cols-1 gap-3 gap-y-4 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 h-full pb-7">
                     {
                         data && data.map((image) =>
 
