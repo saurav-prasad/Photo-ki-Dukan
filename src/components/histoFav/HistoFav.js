@@ -51,7 +51,7 @@ function HistoFav({ type, showAlert }) {
     }, [user])
 
     return (
-        <div className={`md:mt-10 mt-5 absolute w-full ${(data?.length === 1) && 'bottom-0'} ${(data?.length === 2) && 'sm:bottom-0'} ${(data?.length === 3) && "md:bottom-0"} ${(data?.length <= 4) && 'xl:bottom-0 '} ${(bottomPosition || data?.length <= 0) ? 'bottom-0' : ""}`}>
+        <div className={`md:mt-10 mt-5 absolute w-full ${(data?.length === 1) && 'bottom-0'} ${(data?.length === 2) && 'sm:bottom-0'} ${(data?.length === 3) && "md:bottom-0"} ${(data?.length === 4) && 'xl:bottom-0 '} ${(bottomPosition || data?.length <= 0) ? 'bottom-0' : ""}`}>
             <Slide direction='up' duration={250}>
                 {/* header */}
                 <section className='text-white text-4xl md:text-5xl font-bold flex flex-col gap-2 mt-20 select-none'>
