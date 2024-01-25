@@ -161,7 +161,7 @@ export const HeaderMenu = ({ setToggleMenu, user, logOutUser }) => {
                     </span>
                     {/* user email */}
                     <span className='flex justify-start items-center gap-1 rounded-sm transition-all font-medium hover:bg-[#F5F5F5] border-t text-[#475467] cursor-pointer select-none pl-2 py-3 pr-10 w-full text-nowrap'>
-                        <User size={20} className='' /> <span className='select-none text-sm'>{sliceString(user?.email, 12)}</span>
+                        <User size={20} className='' /> <span className='select-none text-sm'>{sliceString(user?.email, 15)}</span>
                     </span>
                 </>}
             </div >
