@@ -44,6 +44,7 @@ per_page: perPage
 setData(imageData.data.hits) 
 settotalPages(Math.ceil((imageData.data.totalHits / perPage))) 
 setLoader(false)
+                    if (imageData.data.length <= 0) { setBottomPosition(true) }
  } catch (error) { 
 console.log(error); 
 setLoader(false) 
