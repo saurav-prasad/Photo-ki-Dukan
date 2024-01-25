@@ -70,7 +70,9 @@ function HistoFav({ type, showAlert }) {
                     {/* if image not available */}
                     {
                         data?.length <= 0 && <div className="md:h-[33vh] h-[30vh] flex justify-center items-center">
-                            <h1 className='text-center text-3xl md:text-4xl font-semibold text-gray-900 '>No {type}!</h1>
+                            <Slide duration={180} direction='up'>
+                                <h1 className='text-center text-3xl md:text-4xl font-semibold text-gray-900 '>No {type}!</h1>
+                            </Slide>
                         </div>
                     }
                 </section>

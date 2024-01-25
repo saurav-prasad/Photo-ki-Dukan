@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { searchPhoto } from '../../axios/axios'
 import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
-import { Bounce, Roll, Slide } from 'react-awesome-reveal'
+import { Slide } from 'react-awesome-reveal'
 import InfiniteScroll from 'react-infinite-scroll-component'
 
 
@@ -26,8 +26,7 @@ function CardLists() {
         navigate(`/search/${e}`)
     }
 
-<<<<<<< HEAD
-    // images loader 
+    // images loader
     useEffect(() => {
         async function fetchData() {
             setBottomPosition(false)
@@ -54,44 +53,10 @@ function CardLists() {
         }
         fetchData()
     }, [imageQuery])
-=======
-   // images loader 
-useEffect(() => { 
-async function fetchData() { 
-setBottomPosition(false)
- setData([]) 
-setLoader(true) 
-try { 
-const imageData = await searchPhoto.get('', { 
-params: { 
-q: imageQuery, 
-page: page, 
-per_page: perPage 
-},
- }) 
-            setpage(page + 1);
-setData(imageData.data.hits) 
-settotalPages(Math.ceil((imageData.data.totalHits / perPage))) 
-setLoader(false)
-                    if (imageData.data.hits.length <= 0) { setBottomPosition(true) }
- } catch (error) { 
-console.log(error); 
-setLoader(false) 
-setBottomPosition(true) 
-} 
-} 
-fetchData() 
-}, [imageQuery]) 
->>>>>>> 2fb6fa16502b26bf91683f8d5b4a553051ecb6c9
 
     // load more data for infinite scroll
     const fetchMoreData = async () => {
         try {
-<<<<<<< HEAD
-=======
-            
-
->>>>>>> 2fb6fa16502b26bf91683f8d5b4a553051ecb6c9
             const imageData = await searchPhoto.get('', {
                 params: {
                     q: imageQuery,
@@ -99,13 +64,8 @@ fetchData()
                     per_page: perPage
                 },
             })
-<<<<<<< HEAD
             setpage(page + 1);
             setData(data.concat(imageData.data.hits))
-=======
-           setpage(page + 1);
- setData(data.concat(imageData.data.hits))
->>>>>>> 2fb6fa16502b26bf91683f8d5b4a553051ecb6c9
             settotalPages(Math.ceil((imageData.data.totalHits / perPage)))
             setLoader(false)
         } catch (error) {
@@ -159,16 +119,11 @@ fetchData()
                     </InfiniteScroll>
                     {
                         // if image not found
-<<<<<<< HEAD
                         data?.length <= 0 &&
                         <div className="md:h-[33vh] h-[30vh] flex justify-center items-center">
                             <Slide duration={180} direction='up'>
                                 <h1 className='text-center text-4xl font-semibold text-gray-900 '>Image not found!</h1>
                             </Slide>
-=======
-                        data?.length <= 0 && <div className="md:h-[33vh] h-[30vh] flex justify-center items-center">
-                            <h1 className='text-center text-4xl font-semibold text-gray-900 '>Image not found!</h1>
->>>>>>> 2fb6fa16502b26bf91683f8d5b4a553051ecb6c9
                         </div>
                     }
                 </section>
