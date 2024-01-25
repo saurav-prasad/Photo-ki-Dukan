@@ -12,6 +12,7 @@ import Login from './components/login/Login';
 import Error from './components/error/Error';
 import HistoFav from './components/histoFav/HistoFav';
 import { AlertCircle } from 'lucide-react';
+import ScrollToTop from './components/scrollToTop/ScrollToTop';
 
 function App() {
   const [alert, setAlert] = useState(false)
@@ -148,8 +149,14 @@ function App() {
           <span className="font-medium flex justify-center items-center gap-1"><AlertCircle size={17} strokeWidth={2} />{alertText}</span>
         </div>
       </div >
-
+      <div className={`flex justify-center items-center fixed bottom-4 z-[10] right-4 transition-all duration-300 `}  >
+        <ScrollToTop />
+      </div>
       <div className='relative h-full'>
+
+        {/* <div className='f cursor-pointer fixed bottom-[50px] right-0 w-fit bg-red-100 p-2 rounded-full z-[100]'>
+          <ArrowUpFromDot size={30} className='' />
+        </div> */}
 
         {/* background image */}
         <div

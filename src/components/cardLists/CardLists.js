@@ -7,6 +7,7 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { Slide } from 'react-awesome-reveal'
 import InfiniteScroll from 'react-infinite-scroll-component'
+import { ArrowUpFromDot } from 'lucide-react'
 
 
 function CardLists() {
@@ -30,7 +31,7 @@ function CardLists() {
     useEffect(() => {
         async function fetchData() {
             setBottomPosition(false)
-            setData([])
+            setData()
             setLoader(true)
             try {
                 const imageData = await searchPhoto.get('', {
@@ -75,14 +76,14 @@ function CardLists() {
     };
 
     return (
-        <div className={`md:mt-10 mt-5 absolute w-full ${(bottomPosition) ? 'bottom-0' : ""}`}>
+        <div className={`md:mt-10 mt-5 absolute w-full  ${(data?.length === 1) && 'bottom-0'} ${(data?.length === 2) && 'sm:bottom-0'} ${(data?.length === 3) && "md:bottom-0"} ${(data?.length <= 4) && 'xl:bottom-0 '} ${(bottomPosition) ? 'bottom-0' : ""}`}>
             <Slide triggerOnce direction='up' duration={250}>
                 {/* result name */}
                 <section className='text-white text-4xl md:text-5xl font-bold flex flex-col gap-2 mt-20 select-none'>
                     <span className='w-full text-center'>Results: {imageQuery}</span>
                 </section>
 
-                <section className="bg-white mt-12 h-full">
+                <section className="bg-white mt-12 h-full relative">
                     {/* shortcut search */}
                     <div className='cardListsTabs bg-[#F5F5F5] flex flex-row justify-start items-center gap-5 px-3 py-5'>
                         {
@@ -95,7 +96,7 @@ function CardLists() {
                     </div>
                     {/* infinite scrolling  */}
                     <InfiniteScroll
-                        dataLength={data.length}
+                        dataLength={data?.length}
                         next={fetchMoreData}
                         hasMore={page < totalPages}
                         loader={() => { setLoader(true) }}
@@ -117,6 +118,7 @@ function CardLists() {
                             }
                         </div>
                     </InfiniteScroll>
+
                     {
                         // if image not found
                         data?.length <= 0 &&
