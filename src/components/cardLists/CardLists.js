@@ -98,7 +98,7 @@ fetchData()
                     <InfiniteScroll
                         dataLength={data.length}
                         next={fetchMoreData}
-                        hasMore={page <= totalPages}
+                        hasMore={page < totalPages}
                         loader={() => { setLoader(true) }}
                     >
                         {/* cards */}
@@ -120,7 +120,7 @@ fetchData()
                     </InfiniteScroll>
                     {
                         // if image not found
-                        bottomPosition && <div className="md:h-[33vh] h-[30vh] flex justify-center items-center">
+                        data?.length <= 0 && <div className="md:h-[33vh] h-[30vh] flex justify-center items-center">
                             <h1 className='text-center text-4xl font-semibold text-gray-900 '>Image not found!</h1>
                         </div>
                     }
