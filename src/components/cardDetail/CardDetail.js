@@ -207,7 +207,7 @@ function CardDetail({ showAlert }) {
                                         <img onLoad={() => { setimageLoad(true) }} className=' object-contain w-full max-h-[80vh]  rounded-md' src={cardData?.largeImageURL} alt="" />
                                     }
                                     {!imageLoad && <div className='w-full'>
-                                        <Skeleton className='text-[30em] object-containrounded-md' baseColor="#d4d4d4" highlightColor="#858383" />
+                                        <Skeleton className='md:text-[27em] text-[22em] object-containrounded-md' baseColor="#d4d4d4" highlightColor="#858383" />
                                     </div>}
                                 </div>
                                 {/* image details */}
