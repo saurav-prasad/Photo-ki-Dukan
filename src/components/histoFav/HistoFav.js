@@ -4,9 +4,10 @@ import sortArray from '../../functions/sortArray'
 import Card from '../card/Card';
 import { Slide } from 'react-awesome-reveal';
 import { useDispatch, useSelector } from 'react-redux';
-import { createFavourite } from '../../redux/features/favourite';
-import { createDownloads } from '../../redux/features/downloads';
+import { addFavourite, createFavourite } from '../../redux/features/favourite';
+import { addDownloads, createDownloads } from '../../redux/features/downloads';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { searchPhoto } from '../../axios/axios';
 
 function HistoFav({ type, showAlert }) {
     const [data, setData] = useState()
@@ -16,7 +17,7 @@ function HistoFav({ type, showAlert }) {
     const navigate = useNavigate()
     const location = useLocation()
     const [bottomPosition, setBottomPosition] = useState(false)
-
+    // const [allImages, setallImages] = useState([])
     // fetching data from database and adding it to the redux store
     useEffect(() => {
         async function fetchData() {
@@ -29,7 +30,24 @@ function HistoFav({ type, showAlert }) {
                         .select('*')
                         .eq('user_id', user?.id)
                     if (imageData.data.length <= 0) { setBottomPosition(true) }
-                    dispatch(type === 'favourite' ? createFavourite(imageData.data) : createDownloads(imageData.data))
+                    else {
+                        // console.log(imageData);
+                        Promise.all(imageData.data.map(async (e) => {
+                            console.log(e);
+                            const imageDataById = await searchPhoto.get('', {
+                                params: {
+                                    id: e.image_id,
+                                }
+                            })
+                            // setallImages([...allImages, { ...e, image_url: imageDataById.data.hits[0].largeImageURL }])
+                            // console.log(imageDataById.data.hits[0].largeImageURL);
+                            // console.log({ ...e, image_url: imageDataById.data.hits[0].largeImageURL });
+                            dispatch(type === 'favourite' ?
+                                addFavourite({ ...e, image_url: imageDataById.data.hits[0].largeImageURL }) :
+                                addDownloads({ ...e, image_url: imageDataById.data.hits[0].largeImageURL }))
+                        }))
+                        // dispatch(type === 'favourite' ? createFavourite(imageData.data) : createDownloads(imageData.data))
+                    }
                 }
             } catch (error) {
                 console.log(error);
@@ -41,6 +59,7 @@ function HistoFav({ type, showAlert }) {
 
     // fetching data from redux store
     useEffect(() => {
+        // console.log(histoFavState);
         setData(sortArray(histoFavState))
     }, [histoFavState, location])
 

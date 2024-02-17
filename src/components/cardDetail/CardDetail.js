@@ -153,6 +153,7 @@ function CardDetail({ showAlert }) {
                         id: previewId,
                     }
                 })
+                console.log(imageData.data.hits[0].largeImageURL);
                 setCardData(imageData.data.hits[0])
                 const favCheck = await supabaseClient.from('favourite').select('*').eq('user_id', user?.id).eq('image_id', previewId)
                 favCheck.data.length > 0 && setFav(true)

@@ -7,7 +7,6 @@ import 'react-loading-skeleton/dist/skeleton.css'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 import { Slide } from 'react-awesome-reveal'
 import InfiniteScroll from 'react-infinite-scroll-component'
-import { ArrowUpFromDot } from 'lucide-react'
 
 
 function CardLists() {
